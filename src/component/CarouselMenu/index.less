@@ -1,0 +1,103 @@
+@import '../../style/default.less';
+
+.nav-menu-container {
+  position: relative;
+
+  .switch-btn {
+    position: absolute;
+    width: 30px;
+    top: 35%;
+    transform: translateY(-55%);
+    color: @ColorL;
+    border-color: transparent;
+    font-size: @fontK;
+    line-height: @fontK;
+    z-index: 1;
+
+    &:nth-child(2) {
+      right: 0
+    }
+  }
+}
+
+.carousel-menu-container {
+  padding: 30px 25px;
+
+  .ant-list-item {
+    margin: 0 !important;
+
+    .ant-card {
+      text-align: center;
+      border: 0;
+      cursor: default;
+
+      &.ant-card-hoverable {
+        box-shadow: 0 0 @ColorF !important;
+
+        &:hover {
+
+          .cover-image {
+            transform: scale(1.1);
+
+            &::after {
+              position: absolute;
+              content: '';
+              width: 90%;
+              height: 90%;
+              left: 5%;
+              right: 5%;
+              top: 5%;
+              bottom: 5%;
+              border: 1px solid @ColorD;
+              border-radius: 200px;
+              // transform: translate(-45%);
+            }
+          }
+
+          .nav-menu-btn {
+            border: 0;
+            background-color: @ColorD;
+            color: @ColorF;
+            box-shadow: 0 2px 5px @ColorD;
+          }
+        }
+      }
+
+      .cover-image {
+        display: inline-block;
+        position: relative;
+        border-radius: 100px;
+        width: 80px;
+        height: 80px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        transition: all 0.2s ease-in;
+        cursor: default;
+      }
+
+      .nav-menu-btn {
+        border-radius: 50px;
+        background-color: @ColorI;
+        cursor: pointer;
+        // padding: 0 10px;
+
+        &:hover,
+        &:focus {
+          background-color: @ColorD;
+          color: @ColorF;
+          box-shadow: 0 2px 5px @ColorD;
+        }
+      }
+
+      img {
+        display: inline-block;
+        width: 40%;
+      }
+
+      .ant-card-body {
+        padding: 8% 0;
+      }
+    }
+  }
+}

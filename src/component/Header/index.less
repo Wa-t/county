@@ -1,0 +1,127 @@
+@import '../../style/default.less';
+
+.user-state-control {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: @ColorA;
+  width: 100%;
+  left: 0;
+  padding: 0 15%;
+  color: @ColorF;
+  font-size: @fontA;
+  height: 40px;
+
+  .state-control-btn {
+    border: unset;
+    height: 14px;
+    line-height: 14px;
+
+    &:first-child {
+      border-right: 1px solid @ColorF;
+    }
+  }
+}
+
+.header-slogan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 118px;
+  padding: 1.5% 0%;
+  margin-top: 40px;
+
+  .logo {
+    width: 259px;
+    height: 74px;
+  }
+
+  .slogan {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    float: left;
+    font-weight: bold;
+
+    div {
+      display: inline-block;
+    }
+
+    div:first-child {
+      position: relative;
+      font-size: @fontJ;
+      line-height: 32px;
+      white-space: nowrap;
+      margin-right: 10px;
+      padding-right: 10px;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(180deg, rgba(241,240,245,0.2) 0%, rgba(7,7,8,1) 45%, rgba(16,16,17,1) 55%, rgba(241,244,245,0.2) 100%);
+      }
+    }
+
+    img:first-child {
+      height: 60px;
+    }
+
+    p {
+      margin: 0;
+      line-height: 20px;
+      white-space: nowrap;
+      font-size: @fontC;
+
+      .highlight {
+        color: @ColorD;
+      }
+    }
+    .qrcode {
+      width: 80px;
+      height: 80px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '郡县网二维码';
+      text-align: right;
+      width: 90px;
+      height: 26px;
+      bottom: 0;
+      right: 0;
+      padding-right: 5px;
+      font-size: @fontA;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+
+  .header-slogan {
+    .qrcode {
+      display: none;
+    }
+
+    .slogan {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .header-slogan {
+    .logo {
+      display: none;
+    }
+  }
+}

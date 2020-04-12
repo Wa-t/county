@@ -1,0 +1,202 @@
+@import '../../style/default.less';
+
+.pass-container {
+  position: relative;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    background-size: cover;
+    height: 420px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  &::before {
+    position: absolute;
+    top: 290px;
+    background: url('../../assets/images/bg-pass-top.png') center no-repeat;
+  }
+
+  &::after {
+    top: 1020px;
+    background: url('../../assets/images/bg-pass-bottom.png') center no-repeat;
+  }
+
+  .pass-content-container {
+    padding: 3% 15%;
+    text-align: center;
+    background-color: @ColorO;
+    background: url('../../assets/images/bg-map.png') center no-repeat;
+    background-position-y: 200px;
+    background-size: 70%;
+
+    .ant-input-search {
+      position: relative;
+      z-index: 2;
+
+      .ant-input-search-button {
+        font-size: @fontN;
+      }
+    }
+
+    .pass-nav-module {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      width: 700px;
+      height: 700px;
+      background: url('../../assets/images/frame.png') center no-repeat;
+      background-size: cover;
+      z-index: 2;
+      margin: 150px auto;
+
+
+      .module-content {
+        display: inline-block;
+        width: 65%;
+
+        p {
+          margin: 0;
+        }
+        .module-title {
+          font-size: @fontK;
+          font-weight: bold;
+        }
+
+        .module-name {
+          display: inline-block;
+          color: @ColorF;
+          font-size: @fontK;
+          width: 60%;
+          margin: 30px 0;
+          background: linear-gradient(90deg, rgba(241,240,245,0.2) 0%, rgba(27,99,218,1) 35%, rgba(27,99,218,1) 65%, rgba(241,244,245,0.2) 100%);
+        }
+
+        .module-body {
+          padding: 25px 15px;
+          background-color: @ColorF;
+          border: 1px solid @ColorD;
+          border-radius: 8px;
+
+          p {
+            color: @ColorP;
+            font-size: @fontB;
+            line-height: 2;
+            text-indent: @fontG;
+            text-align: left;
+          }
+        }
+      }
+
+      .pass-menu-item {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(180deg, rgba(241,240,245,0.2) 0%, rgba(57,177,236,1) 0%, rgba(35,96,245,1) 100%, rgba(241,244,245,0.2) 100%);
+        border: 5px solid rgba(184, 219, 254, 0.9);
+        border-radius: 100px;
+        color: @ColorF;
+        transition: all 0.2s ease-in;
+        overflow: hidden;
+
+        &:hover,
+        &.pass-menu-active {
+          transform: scale(1.2);
+
+          &::before {
+            position: absolute;
+            content: '';
+            background: url('../../assets/images/point-light.png') center no-repeat;
+            background-size: cover;
+            // width: 104%;
+            // height: 104%;
+            left: -2%;
+            top: -1%;
+            right: -2%;
+            bottom: -1%;
+          }
+        }
+
+        p {
+          position: relative;
+          margin: 0;
+          font-size: @fontA;
+          z-index: 1;
+        }
+
+        p:first-child {
+          font-size: @fontF;
+        }
+
+        &:nth-child(1) {
+          top: -40px;
+        }
+        &:nth-child(2) {
+          top: 60px;
+          left: 550px;
+        }
+        &:nth-child(3) {
+          top: 300px;
+          left: 660px;
+          p:first-child {
+            font-size: @fontE;
+          }
+        }
+        &:nth-child(4) {
+          top: 550px;
+          left: 550px;
+          p:first-child {
+            font-size: @fontE;
+          }
+        }
+        &:nth-child(5) {
+          top: 650px;
+          p:first-child {
+            font-size: @fontE;
+          }
+        }
+        &:nth-child(6) {
+          top: 550px;
+          left: 50px;
+        }
+        &:nth-child(7) {
+          top: 300px;
+          left: -40px;
+          p:first-child {
+            font-size: @fontE;
+          }
+        }
+        &:nth-child(8) {
+          top: 60px;
+          left: 40px;
+        }
+      }
+    }
+  }
+  .ant-input-search {
+    padding: 0 30px;
+
+    .ant-input-search-button {
+      padding: 0 25px;
+    }
+  }
+
+  .line-wave {
+    position: absolute;
+    top: 760px;
+    left: 0;
+  }
+
+  #line-two {
+    opacity: 0.3;
+  }
+}

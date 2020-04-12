@@ -1,0 +1,102 @@
+@import '../../style/default.less';
+
+.event-card-container {
+  border-radius: 4px;
+
+  .header-container {
+    position: relative;
+    padding: 8px 0;
+    border-radius: 5px 5px 0 0;
+    // overflow: hidden;
+
+    span {
+      padding: 0 10px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: -3px;
+      left: -8px;
+      transform: rotate(-65deg);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 6px 12px 6px;
+      z-index: 1;
+    }
+
+    &.voted::after {
+      border-color: transparent transparent @ColorD transparent;
+    }
+
+    &.voting::after {
+      border-color: transparent transparent @ColorJ transparent;
+    }
+
+    &.undetermined::after{
+      border-color: transparent transparent @ColorK transparent;
+    }
+
+    p {
+      margin: 2px;
+      text-align: center;
+
+      &:nth-child(2) {
+        font-size: @fontC;
+        padding: 0 15px;
+      }
+
+      &:nth-child(3) {
+        font-size: @fontB;
+      }
+    }
+  }
+
+  .ant-card-body {
+    padding: 10px;
+  }
+
+  .sponser-info {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: @ColorH;
+    margin-bottom: 8px;
+
+    img {
+      height: 25px;
+      padding: 0 5px;
+    }
+    span:last-child {
+      line-height: 25px;
+    }
+  }
+
+  .option-container {
+    text-align:center;
+    white-space: nowrap;
+
+    .ant-btn {
+      max-width: 80px;
+      border-radius: 3px;
+      font-size: @fontB;
+    }
+
+    .ant-btn-group {
+      .ant-btn:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.ant-timeline-item-right {
+  .header-container {
+    &::after {
+      left: unset;
+      right: -8px !important;
+      transform: rotate(65deg);
+    }
+  }
+}

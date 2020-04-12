@@ -1,0 +1,36 @@
+@import '../../style/default.less';
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: @fontB;
+  color: @ColorB;
+
+  .links-group-title {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 32px;
+  }
+
+  .ant-btn-group {
+    text-align: left;
+  }
+
+  .link-item {
+    color: @ColorB;
+
+    &:not(:last-child) {
+      position: relative;
+
+      & ::after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        top: 25%;
+        bottom: 25%;
+        right: 0;
+        background-color: @ColorB;
+      }
+    }
+  }
+}

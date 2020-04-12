@@ -1,0 +1,30 @@
+@import './style/default.less';
+
+.ant-layout-header {
+  background-color: unset;
+  height: 212px;
+  padding: 0 15%;
+  background: @ColorF;
+}
+
+.ant-layout-content {
+  background: @ColorF;
+  overflow: hidden;
+}
+
+.ant-layout-footer {
+  padding: 24px 15%;
+  background: @ColorA;
+  font-size: @fontB;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .ant-layout-content {
+    padding: 0;
+
+    .hundred-county-container {
+      padding: 0 20px;
+    }
+  }
+}

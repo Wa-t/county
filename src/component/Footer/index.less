@@ -1,0 +1,38 @@
+@import '../../style/default.less';
+
+.footer-container {
+  text-align: center;
+  color: @ColorB;
+
+  .footer-menu {
+    position: relative;
+    color: @ColorB;
+    margin: 20px 0 30px 0;
+    padding-bottom: 20px;
+
+    .ant-btn-group {
+
+      .ant-btn {
+        color: @ColorB;
+        border-color: @ColorB;
+        margin: 10px 15px;
+        border-radius: 45px;
+
+        &:hover {
+          color: @ColorD;
+          border-color: @ColorD;
+        }
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 150%;
+      height: 1px;
+      left: -28.5%;
+      bottom: 0;
+      background-color: @ColorB;
+    }
+  }
+}

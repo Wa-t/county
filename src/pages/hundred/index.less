@@ -1,0 +1,150 @@
+@import '../../style/default.less';
+
+.hundred-county-container {
+  padding: 0 15%;
+
+  .nav-container {
+    position: relative;
+    z-index: 1;
+
+    .ant-breadcrumb {
+      padding-top: 15px;
+    }
+    .ant-breadcrumb > span:last-child a {
+      color: @ColorD;
+    }
+
+    .ant-btn-group {
+      display: flex;
+      justify-content: space-between;
+      padding: 25px 0;
+      flex-wrap: wrap;
+
+      .ant-btn {
+        border-radius: 50px;
+        padding: 0 20px;
+        background-color: @ColorI;
+        margin: 5px 5px;
+
+        &:hover,
+        &:focus {
+          background-color: @ColorD;
+          border-color: @ColorD;
+          color: @ColorF;
+        }
+      }
+    }
+  }
+
+  .timeline-container {
+    height: 660px;
+    margin-bottom: 15px;
+    padding: 10px;
+    overflow: scroll;
+
+    .ant-card-body:first-child {
+      padding: 5px 0;
+      overflow: hidden;
+    }
+
+    .ant-timeline-item {
+      padding-bottom: 0;
+      position: relative;
+      height: 120px;
+
+      // &:not(:first-child) {
+      //   top: -100px;
+      // }
+
+      .ant-timeline-item-head-custom {
+        padding: 0;
+        height: 8px;
+
+        .custom-dot {
+          display: inline-block;
+          position: relative;
+          top: -3px;
+          width: 10px;
+          height: 10px;
+          line-height: 1;
+          border-radius: 10px;
+        }
+      }
+
+      .ant-timeline-item-content {
+        position: relative;
+        padding-top: 6px;
+
+        .event-card-container {
+          position: absolute;
+          left: 0;
+          right: 0;
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  .quick-entry-container {
+    margin-bottom: 20px;
+  }
+
+  .list-card {
+    margin-bottom: 15px;
+
+    .ant-card-head {
+      min-height: 45px;
+
+      .icon {
+        display: inline-block;
+        position: relative;
+        top: -2px;
+        margin-right: 10px;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .ant-card-body {
+      padding: 10px;
+
+      .ant-form-item {
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .ant-list-item {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 4.6px 0;
+
+        span:first-child {
+          display: inline-block;
+          width: 80%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .ant-card-head-title,
+    .ant-card-extra {
+      padding: 5px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-container {
+    .ant-btn-group {
+      justify-content: flex-start !important;
+    }
+  }
+}
