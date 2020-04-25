@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Carousel, List, Card, Button } from 'antd';
-import './index.less';
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import { Carousel, List, Card, Button } from "antd";
+import "./index.less";
 
 export default class CarouselMenu extends Component {
   state = {
@@ -15,7 +15,7 @@ export default class CarouselMenu extends Component {
     });
   }
   handleSwitch(type) {
-    if (type === 'prev') {
+    if (type === "prev") {
       this.refs.navCarousel.prev();
     } else {
       this.refs.navCarousel.next();
@@ -49,9 +49,17 @@ export default class CarouselMenu extends Component {
             itemLayout="horizontal"
             grid={{ gutter: 16, column: perPageCount }}
             dataSource={data}
-            renderItem={item => (
+            renderItem={(item) => (
               <List.Item>
-                <Card hoverable cover={<div className="cover-image" style={{ backgroundImage: `url(${item.icon})` }}></div>}>
+                <Card
+                  hoverable
+                  cover={
+                    <div
+                      className="cover-image"
+                      style={{ backgroundImage: `url(${item.icon})` }}
+                    ></div>
+                  }
+                >
                   {/* {item.path ? (
                     <NavLink to={item.path}>
                       <Button className="nav-menu-btn">{item.title}</Button>
@@ -59,7 +67,7 @@ export default class CarouselMenu extends Component {
                   ) : (
                     <Button className="nav-menu-btn">{item.title}</Button>
                   )} */}
-                  <NavLink to={item.path || '/'}>
+                  <NavLink to={item.path || "/"}>
                     <Button className="nav-menu-btn">{item.title}</Button>
                   </NavLink>
                 </Card>
@@ -78,18 +86,23 @@ export default class CarouselMenu extends Component {
           shape="circle"
           icon="left"
           ghost
-          style={{ visibility: currentIdx === 0 ? 'hidden' : 'visible' }}
-          onClick={() => this.handleSwitch('prev')}
+          style={{ visibility: currentIdx === 0 ? "hidden" : "visible" }}
+          onClick={() => this.handleSwitch("prev")}
         ></Button>
-        <Button
+        {/* <Button
           className="switch-btn"
           shape="circle"
           icon="right"
           ghost
           style={{ visibility: currentIdx === totalPageNum - 1 ? 'hidden' : 'visible' }}
           onClick={() => this.handleSwitch('next')}
-        ></Button>
-        <Carousel className="carousel-menu-container" ref="navCarousel" dots={false} afterChange={current => this.handleChange(current)}>
+        ></Button> */}
+        <Carousel
+          className="carousel-menu-container"
+          ref="navCarousel"
+          dots={false}
+          afterChange={(current) => this.handleChange(current)}
+        >
           {this.renderCarouselItems()}
         </Carousel>
       </div>

@@ -1,12 +1,21 @@
-import { createStore, combineReducers } from "redux";
-import loggedUserReducer from '../reducer/loggedUserReducer';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import loggedUserReducer from "../reducer/loggedUserReducer";
+import channelReducer from "../reducer/channelReducer";
+import thunkMiddleware from "redux-thunk";
 
-var reducers = combineReducers({
-  loggedUserReducer
+const reducers = combineReducers({
+  loggedUserReducer,
+  channelReducer,
 });
 
-const store = createStore(reducers);
+let middlewares = [thunkMiddleware];
 
-store.subscribe(() => {});
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(require("redux-logger").createLogger());
+}
+// const store = createStore(reducers);
+
+const store = applyMiddleware(...middlewares)(createStore)(reducers);
+// store.subscribe(() => {});
 
 export default store;
