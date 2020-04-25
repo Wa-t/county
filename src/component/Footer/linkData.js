@@ -2,7 +2,7 @@ export const footerMenu = [
   {
     id: 1,
     name: '关于我们',
-    address: 'https://www.clgnews.com/tong'
+    address: '/#/about'
   },
   {
     id: 2,
