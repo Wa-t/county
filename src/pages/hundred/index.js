@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb, Popover, Modal } from 'antd';
+import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs } from 'antd';
 import moment from 'moment';
 import EventCard from '../../component/EventCard';
 import QuickEntry from '../../component/QuickEntry';
@@ -18,10 +18,12 @@ import { eventTimeLine as events } from './eventTimeLine';
 import voteQRCode from '../../assets/images/vote_qrcode.png';
 import { notices, news, reports, sponsers } from './listData';
 import { navMenu } from './linkData';
+import { inProgressList, publishList, noPublishList } from './data';
 
 const TimeLineItem = Timeline.Item;
 const { Option } = Select;
 const BreadcrumbItem = Breadcrumb.Item;
+const { TabPane } = Tabs;
 
 const Colors = {
   voted: '#1B63DA',
@@ -40,7 +42,10 @@ class HundredCounty extends Component {
     super(props);
     this.state = {
       visible: false,
-      declareVisible: false
+      declareVisible: false,
+      inProgressList: inProgressList,
+      publishList: publishList,
+      noPublishList: noPublishList
     }
   }
   handleDeclareAction = () => {
@@ -62,6 +67,110 @@ class HundredCounty extends Component {
       declareVisible: false
     });
   };
+
+  renderTabs = () => {
+    return (
+      <Card className="tabs-card">
+        <Tabs defaultActiveKey="1" type="card" >
+          <TabPane tab="进行中榜单" key="1">
+            <div className="tab-pane-inner">
+              {this.renderInProgress()}
+            </div>
+          </TabPane>
+          <TabPane tab="已发布榜单" key="2">
+          <div className="tab-pane-inner">
+              {this.renderPublish()}
+            </div>
+          
+          </TabPane>
+          <TabPane tab="未发布榜单" key="3">
+          <div className="tab-pane-inner">
+              {this.renderNoPublish()}
+            </div>
+          </TabPane>
+        </Tabs>
+      </Card>
+    )
+  }
+
+  renderInProgress = () => {
+    const {inProgressList} = this.state
+    return (
+      <ul className="selecting">
+        {
+          inProgressList.map((o, i) => {
+            return (
+              <li key={i} >
+              <div className="left">
+                <Button  className="selecting-tag">榜单公告</Button>
+                <Button  className="selecting-tag">榜单冠名</Button>
+              </div>
+              <div className="center">
+                <div className="title">{o}</div>
+                <div>发布时间：2020年4月14日</div>
+              </div>
+              <div className="right">
+                我要投票
+              </div>
+            </li>
+            )
+          })
+        }
+      </ul>
+    )
+  }
+
+  renderPublish = () => {
+    const {publishList} = this.state
+    return (
+      <ul className="publish">
+        {
+          publishList.map((item, index) => {
+            return (
+              <li key={index}>
+                <div className="left">
+                  <div className="title">{item}</div>
+                  <div className="time">发布时间：2020年4月14日</div>
+                </div>
+                <div className="right">
+                  <button>十佳榜</button>
+                  <button>百佳榜</button>
+                  <button>榜单<br />报告</button>
+                  <button>榜单<br />新闻</button>
+                  {/* <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4/#px10">十佳榜</a></button>
+                  <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4/#px100">百佳榜</a></button>
+                  <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfac/">榜单<br />报告</a></button>
+                  <button><a href="https://www.clgnews.com/news_list/bangdannews/1">榜单<br />新闻</a></button> */}
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
+  }
+
+  renderNoPublish = () => {
+    const {noPublishList} = this.state
+    return (
+      <ul className="no-publish">
+        {
+          noPublishList.map((item, index) => {
+            return (
+              <li key={index}>
+                <div className="left">2020<br />四月</div>
+                <div className="right">
+                  <div className="title">{item}</div>
+                  <div className="time">发布时间：2020年4月14日</div>
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
+  }
+
   renderTimeLine() {
     return (
       <Card className="timeline-container">
@@ -159,23 +268,13 @@ class HundredCounty extends Component {
         </Col>
         <Row gutter={20}>
           <Col xs={24} xl={10}>
-            {this.renderTimeLine()}
+            {/* {this.renderTimeLine()} */}
+            {this.renderTabs()}
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF'}}/>
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
           </Col>
           <Col xs={24} xl={14}>
-            {/* <Card
-              className="list-card"
-              title="榜单查询"
-              extra={
-                <Button type="link" href="https://www.clgnews.com/bang/cclist" target="_blank">
-                  全部榜单
-                </Button>
-              }
-            >
-              {this.renderSearchList()}
-            </Card> */}
              <Card
               className="list-card"
               style={{ position: 'relative' }}
