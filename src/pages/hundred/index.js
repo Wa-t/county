@@ -165,7 +165,7 @@ class HundredCounty extends Component {
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
           </Col>
           <Col xs={24} xl={14}>
-            <Card
+            {/* <Card
               className="list-card"
               title="榜单查询"
               extra={
@@ -175,6 +175,21 @@ class HundredCounty extends Component {
               }
             >
               {this.renderSearchList()}
+            </Card> */}
+             <Card
+              className="list-card"
+              style={{ position: 'relative' }}
+            >
+              <h3>中国县域发展排行榜</h3>
+              <h4 style={{ color: '#1b63da' }}>展现中国全面小康辉煌成就·创建县域发展综合测评体系</h4>
+              
+              <p>百县榜是由《小康》杂志联合多个国家权威部门和专业机构，面向中国县域基层行政单位，
+隆重推出的百县榜单工程：中国县域发展榜。“中国县域发展榜”聚焦县域发展，针对全
+国每个县域的多项政务领域，深度观察社会民生发展的“毛细血管”，展现中国全面小康
+的辉煌成就，创建中国2856个县域发展的综合测评体系...</p>
+                <Button style={{ position: 'absolute', bottom: 10, right: 24 }} type="link">
+                  更多
+                </Button>
             </Card>
             <Card
               className="list-card"
