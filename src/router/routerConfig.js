@@ -4,6 +4,9 @@ import HundredCounty from '../pages/hundred';
 import Channel from '../pages/channel';
 import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
+import About from '../pages/about';
+import Member from '../pages/member';
+
 
 const routes = [
   {
@@ -22,6 +25,16 @@ const routes = [
     path: '/channel',
     component: Channel,
     name: '郡县号'
+  },
+  {
+    path: '/about',
+    component: About,
+    name: '关于我们'
+  },
+  {
+    path: '/member',
+    component: Member,
+    name: '关于我们'
   },
   {
     path: '/pass',

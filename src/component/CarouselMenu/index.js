@@ -51,26 +51,26 @@ export default class CarouselMenu extends Component {
             dataSource={data}
             renderItem={(item) => (
               <List.Item>
-                <Card
-                  hoverable
-                  cover={
-                    <div
-                      className="cover-image"
-                      style={{ backgroundImage: `url(${item.icon})` }}
-                    ></div>
-                  }
-                >
-                  {/* {item.path ? (
-                    <NavLink to={item.path}>
+                <NavLink to={item.path || "/"}>
+                  <Card
+                    hoverable
+                    cover={
+                      <div
+                        className="cover-image"
+                        style={{ backgroundImage: `url(${item.icon})` }}
+                      ></div>
+                    }
+                  >
+                    {/* {item.path ? (
+                      <NavLink to={item.path}>
+                        <Button className="nav-menu-btn">{item.title}</Button>
+                      </NavLink>
+                    ) : (
                       <Button className="nav-menu-btn">{item.title}</Button>
-                    </NavLink>
-                  ) : (
-                    <Button className="nav-menu-btn">{item.title}</Button>
-                  )} */}
-                  <NavLink to={item.path || "/"}>
-                    <Button className="nav-menu-btn">{item.title}</Button>
-                  </NavLink>
-                </Card>
+                    )} */}
+                      <Button className="nav-menu-btn">{item.title}</Button>
+                  </Card>
+                </NavLink>
               </List.Item>
             )}
           ></List>
