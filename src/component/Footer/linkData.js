@@ -16,8 +16,8 @@ export const footerMenu = [
   },
   {
     id: 4,
-    name: '招商合作',
-    address: 'https://www.clgnews.com/tong'
+    name: '榜单合作',
+    address: '/#/cooperation'
   }
 ];
 

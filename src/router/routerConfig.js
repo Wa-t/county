@@ -6,6 +6,7 @@ import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
 import About from '../pages/about';
 import Member from '../pages/member';
+import Cooperation from '../pages/cooperation';
 
 
 const routes = [
@@ -29,12 +30,14 @@ const routes = [
   {
     path: '/about',
     component: About,
-    name: '关于我们'
+    name: '关于我们',
+    isShow: false
   },
   {
     path: '/member',
     component: Member,
-    name: '关于我们'
+    name: '会员中心',
+    isShow: false
   },
   {
     path: '/pass',
@@ -54,6 +57,12 @@ const routes = [
         name: '郡县通平台',
       }
     ]
+  },
+  {
+    path: '/cooperation',
+    component: Cooperation,
+    name: '榜单合作',
+    isShow: false
   },
   {
     path: '/age3',
