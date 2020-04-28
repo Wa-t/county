@@ -144,16 +144,20 @@
     height: 610px;
     margin-bottom: 20px;
     overflow: hidden;
+    .tab-pane-box {
+      height: 100%;
+      overflow: scroll;
+    }
     .ant-card-body {
       padding:0;
       .ant-tabs-nav-scroll {
         text-align: center;
       }
     }
-    .selecting, .publish, .no-publish{
-      overflow: auto;
-      height: 100%;
-    }
+    // .selecting, .publish, .no-publish{
+    //   overflow: auto;
+    //   height: 100%;
+    // }
     
     .selecting{
       overflow: auto;
@@ -181,20 +185,22 @@
             background: #ccecfc;
             border-radius: 8px;
             border: 1px solid #1b63da;
+            padding: 4px;
           }
         }
         .center {
-          text-align: left;
           height: 90%;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
+          width: calc(100% - 64px - 80px);
           .title{
             font-size: 18px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             color: #1b63da;
+            position: relative;
           }
         }
         .right{
@@ -263,7 +269,7 @@
           padding-top: 4px;
           border: 1px solid #ccc;
           border-radius: 40px;
-          margin-right: 12px;
+          margin-right: 20px;
         }
         .right{
           width: 200px;

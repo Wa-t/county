@@ -73,18 +73,18 @@ class HundredCounty extends Component {
       <Card className="tabs-card">
         <Tabs defaultActiveKey="1" type="card" >
           <TabPane tab="进行中榜单" key="1">
-            <div className="tab-pane-inner">
+            <div className="tab-pane-box">
               {this.renderInProgress()}
             </div>
           </TabPane>
           <TabPane tab="已发布榜单" key="2">
-          <div className="tab-pane-inner">
+            <div className="tab-pane-box">
               {this.renderPublish()}
             </div>
           
           </TabPane>
           <TabPane tab="未发布榜单" key="3">
-          <div className="tab-pane-inner">
+          <div className="tab-pane-box">
               {this.renderNoPublish()}
             </div>
           </TabPane>
