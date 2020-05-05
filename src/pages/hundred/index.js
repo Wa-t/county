@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs } from 'antd';
+import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs } from 'antd';
 import moment from 'moment';
-import EventCard from '../../component/EventCard';
 import QuickEntry from '../../component/QuickEntry';
 import Banner from '../../component/Banner';
 import './index.less';
@@ -14,28 +13,15 @@ import icon_notices from '../../assets/images/icon_notices.png';
 import icon_news from '../../assets/images/icon_news.png';
 import icon_reports from '../../assets/images/icon_reports.png';
 import icon_sponsers from '../../assets/images/icon_sponsers.png';
-import { eventTimeLine as events } from './eventTimeLine';
 import voteQRCode from '../../assets/images/vote_qrcode.png';
 import { notices, news, reports, sponsers } from './listData';
 import { navMenu } from './linkData';
 import { inProgressList, publishList, noPublishList } from './data';
 
-const TimeLineItem = Timeline.Item;
 const { Option } = Select;
 const BreadcrumbItem = Breadcrumb.Item;
 const { TabPane } = Tabs;
 
-const Colors = {
-  voted: '#1B63DA',
-  voting: '#DF5C5C',
-  undetermined: '#E5E6EB',
-};
-
-const textColors = {
-  voted: '#FFFFFF',
-  voting: '#FFFFFF',
-  undetermined: '#ABABAB',
-};
 
 class HundredCounty extends Component {
   constructor(props) {
@@ -171,25 +157,6 @@ class HundredCounty extends Component {
     )
   }
 
-  renderTimeLine() {
-    return (
-      <Card className="timeline-container">
-        <Timeline mode="alternate">
-          {events.map((event, i) => (
-            <TimeLineItem
-              key={event.id}
-              color={Colors[event.process]}
-              dot={
-                <span className="custom-dot" style={{backgroundColor: Colors[event.process]}}></span>
-              }
-            >
-              <EventCard primaryColor={Colors[event.process]} textColor={textColors[event.process]} event={event} />
-            </TimeLineItem>
-          ))}
-        </Timeline>
-      </Card>
-    );
-  }
   renderSearchList() {
     const { getFieldDecorator } = this.props.form;
     return (
@@ -286,7 +253,7 @@ class HundredCounty extends Component {
 隆重推出的百县榜单工程：中国县域发展榜。“中国县域发展榜”聚焦县域发展，针对全
 国每个县域的多项政务领域，深度观察社会民生发展的“毛细血管”，展现中国全面小康
 的辉煌成就，创建中国2856个县域发展的综合测评体系...</p>
-                <Button style={{ position: 'absolute', bottom: 10, right: 24 }} type="link">
+                <Button style={{ position: 'absolute', bottom: 10, right: 24 }} type="link" href="#/appDetail">
                   更多
                 </Button>
             </Card>
