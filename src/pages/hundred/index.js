@@ -286,7 +286,7 @@ class HundredCounty extends Component {
 隆重推出的百县榜单工程：中国县域发展榜。“中国县域发展榜”聚焦县域发展，针对全
 国每个县域的多项政务领域，深度观察社会民生发展的“毛细血管”，展现中国全面小康
 的辉煌成就，创建中国2856个县域发展的综合测评体系...</p>
-                <Button style={{ position: 'absolute', bottom: 10, right: 24 }} type="link">
+                <Button style={{ position: 'absolute', bottom: 10, right: 24 }} type="link" href="#/appDetail">
                   更多
                 </Button>
             </Card>

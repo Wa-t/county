@@ -7,6 +7,7 @@ import Platform from '../pages/pass/platform';
 import About from '../pages/about';
 import Member from '../pages/member';
 import Cooperation from '../pages/cooperation';
+import HundredDetail from '../pages/hundredDetail';
 
 
 const routes = [
@@ -20,7 +21,6 @@ const routes = [
     path: '/app',
     component: HundredCounty,
     name: '百县榜',
-    // exact: true
   },
   {
     path: '/channel',
@@ -62,6 +62,12 @@ const routes = [
     path: '/cooperation',
     component: Cooperation,
     name: '榜单合作',
+    isShow: false
+  },
+  {
+    path: '/appDetail',
+    component: HundredDetail,
+    name: '百县榜详情',
     isShow: false
   },
   {
