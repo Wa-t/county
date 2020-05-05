@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs } from 'antd';
+import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs, Icon } from 'antd';
 import moment from 'moment';
 import QuickEntry from '../../component/QuickEntry';
 import Banner from '../../component/Banner';
@@ -74,6 +74,12 @@ class HundredCounty extends Component {
               {this.renderNoPublish()}
             </div>
           </TabPane>
+
+          <TabPane tab={<span><Icon type="search" />查询</span>} key="4">
+            <div className="tab-pane-box">
+              {this.renderSearchList()}
+            </div>
+          </TabPane>
         </Tabs>
       </Card>
     )
@@ -123,10 +129,6 @@ class HundredCounty extends Component {
                   <button>百佳榜</button>
                   <button>榜单<br />报告</button>
                   <button>榜单<br />新闻</button>
-                  {/* <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4/#px10">十佳榜</a></button>
-                  <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4/#px100">百佳榜</a></button>
-                  <button><a href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfac/">榜单<br />报告</a></button>
-                  <button><a href="https://www.clgnews.com/news_list/bangdannews/1">榜单<br />新闻</a></button> */}
                 </div>
               </li>
             )
@@ -160,7 +162,7 @@ class HundredCounty extends Component {
   renderSearchList() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
+      <Form labelCol={{ span: 6 }} wrapperCol={{ span: 16 }} onSubmit={this.handleSubmit}>
         <Form.Item label="榜单">
           {getFieldDecorator('note', {
             rules: [{ required: true, message: 'Please input your note!' }],
@@ -185,8 +187,8 @@ class HundredCounty extends Component {
             </Select>
           )}
         </Form.Item>
-        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-          <Button type="primary" htmlType="submit" onClick={this.handleSearchClick}>
+        <Form.Item wrapperCol={{ span: 16, offset: 6 }}>
+          <Button style={{ width: '100%' }} type="primary" htmlType="submit" onClick={this.handleSearchClick}>
             查询
           </Button>
         </Form.Item>
@@ -235,7 +237,6 @@ class HundredCounty extends Component {
         </Col>
         <Row gutter={20}>
           <Col xs={24} xl={10}>
-            {/* {this.renderTimeLine()} */}
             {this.renderTabs()}
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF'}}/>
             <QuickEntry entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
