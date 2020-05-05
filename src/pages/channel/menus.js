@@ -8,7 +8,7 @@ import icon_nav_list from '../../assets/images/icon_nav_list.png';
 const menus = [
   {
     id: 1,
-    title: '县域联通',
+    title: '县域联播',
     icon: icon_nav_play
   },
   {

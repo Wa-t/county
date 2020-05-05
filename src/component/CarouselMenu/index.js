@@ -7,6 +7,7 @@ export default class CarouselMenu extends Component {
   state = {
     currentIdx: 0,
     totalPageNum: 0,
+    nowSelected: 0,
   };
   componentDidMount() {
     const { perPageCount = 6, menus = [] } = this.props;
@@ -25,9 +26,17 @@ export default class CarouselMenu extends Component {
     });
   }
   handleChange(current) {
+    console.log(current)
     this.setState({
       currentIdx: current,
     });
+  }
+
+  onSelecte = (item) => {
+    this.props.onSelecte && this.props.onSelecte(item)
+    this.setState({
+      nowSelected: item.id
+    })
   }
   renderCarouselItems() {
     const { perPageCount = 6, menus = [] } = this.props;
@@ -44,37 +53,40 @@ export default class CarouselMenu extends Component {
     // this.setState({totalPageNum});
     return menusArr.length
       ? menusArr.map((data, i) => (
-          <List
-            key={i}
-            itemLayout="horizontal"
-            grid={{ gutter: 16, column: perPageCount }}
-            dataSource={data}
-            renderItem={(item) => (
-              <List.Item>
-                <NavLink to={item.path || "/"}>
-                  <Card
-                    hoverable
-                    cover={
-                      <div
-                        className="cover-image"
-                        style={{ backgroundImage: `url(${item.icon})` }}
-                      ></div>
-                    }
-                  >
-                    {/* {item.path ? (
+        <List
+          key={i}
+          itemLayout="horizontal"
+          grid={{ gutter: 16, column: perPageCount }}
+          dataSource={data}
+          renderItem={(item, index) => (
+            <List.Item>
+              <div onClick={() => this.onSelecte(item)}>
+                <Card
+                  hoverable
+                  cover={
+                    <div
+                      className="cover-image"
+                      style={{ backgroundImage: `url(${item.icon})` }}
+                    ></div>
+                  }
+                >
+                  {/* {item.path ? (
                       <NavLink to={item.path}>
                         <Button className="nav-menu-btn">{item.title}</Button>
                       </NavLink>
                     ) : (
                       <Button className="nav-menu-btn">{item.title}</Button>
                     )} */}
-                      <Button className="nav-menu-btn">{item.title}</Button>
-                  </Card>
-                </NavLink>
-              </List.Item>
-            )}
-          ></List>
-        ))
+                  <Button
+                    className={this.state.nowSelected === item.id ? 'nav-menu-btn-selected' : 'nav-menu-btn'}
+                  // className="nav-menu"
+                  >{item.title}</Button>
+                </Card>
+              </div>
+            </List.Item>
+          )}
+        ></List>
+      ))
       : null;
   }
   render() {

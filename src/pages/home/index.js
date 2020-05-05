@@ -25,15 +25,15 @@ class HomePage extends Component {
     const config =
       type === "carouse"
         ? {
-            // style: {
-            //   width: "100%",
-            // },
-          }
+          // style: {
+          //   width: "100%",
+          // },
+        }
         : {
-            // style: {
-            //   width: "60%",
-            // },
-          };
+          // style: {
+          //   width: "60%",
+          // },
+        };
     //autoplay="autoplay" loop="loop"
     const { currentCarouselIdx } = this.state;
     return (
@@ -182,10 +182,10 @@ class HomePage extends Component {
           <p className="slogan">
             <span className="highlight">创建中国县域发展</span>的综合测评体系
           </p>
-          <p className="Introduction-video">
+          <div className="Introduction-video">
             <div className="video-title">介绍视频</div>
             {this.renderCarouselVedioItem("Introduction")}
-          </p>
+          </div>
         </div>
       </div>
     );
@@ -199,14 +199,14 @@ class HomePage extends Component {
             <FloatingImage
               className={`${
                 currentCarouselIdx === 0 && " show-floating-image "
-              }`}
+                }`}
               position={["20%", "260px"]}
               delay="0.1s"
             />
             <FloatingImage
               className={`${
                 currentCarouselIdx === 0 && " show-floating-image "
-              }`}
+                }`}
               position={["40%", "40px"]}
               size="small"
               delay="0.2s"
@@ -214,7 +214,7 @@ class HomePage extends Component {
             <FloatingImage
               className={`${
                 currentCarouselIdx === 0 && " show-floating-image "
-              }`}
+                }`}
               position={["60%", "450px"]}
               size="small"
               delay="0.1s"
@@ -222,7 +222,7 @@ class HomePage extends Component {
             <FloatingImage
               className={`${
                 currentCarouselIdx === 0 && " show-floating-image "
-              }`}
+                }`}
               position={["75%", "80px"]}
               size="small"
               delay="0s"
@@ -230,7 +230,7 @@ class HomePage extends Component {
             <FloatingImage
               className={`${
                 currentCarouselIdx === 0 && " show-floating-image "
-              }`}
+                }`}
               position={["75.8%", "84px"]}
               delay="0.1s"
             />

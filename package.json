@@ -42,6 +42,7 @@
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "jsonp": "^0.2.1",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "lib-flexible": "^0.3.2",

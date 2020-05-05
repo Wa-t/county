@@ -26,16 +26,21 @@ class Channel extends Component {
     super(props);
     this.state = {
       playItemId: 0,
+      selectedItem: {},
+      searchText: ''
     };
   }
+
   componentDidMount() {
     window.onresize = () => {
       if (!checkFull()) {
         alert("11");
       }
-      console.log("resize");
     };
+    this.onSearch()
   }
+
+
   handleMouseEnter(ev) {
     let videoItem = ev.currentTarget;
     if (videoItem.getAttribute("hoverplay") === "true") {
@@ -123,10 +128,10 @@ class Channel extends Component {
               <div className="tag-list">
                 {item.tagList.length
                   ? item.tagList.map((tag, i) => (
-                      <span key={i} className="tag-name">
-                        {videoTagType[tag]}
-                      </span>
-                    ))
+                    <span key={i} className="tag-name">
+                      {videoTagType[tag]}
+                    </span>
+                  ))
                   : null}
               </div>
             </List.Item>
@@ -135,15 +140,27 @@ class Channel extends Component {
       </Spin>
     );
   }
+
+  onSelecte = (item) => {
+    console.log(item);
+    this.setState({
+      selectedItem: item
+    }, this.onSearch)
+  }
+
   onSearch = (value) => {
     const { dispatch } = this.props;
-    dispatch(
-      updateState({
-        name: "gsgs",
-      })
-    );
-    dispatch(getVideos());
+    const { selectedItem = {} } = this.state;
+    this.setState({
+      searchText: value
+    })
+    dispatch(getVideos({
+      tag: selectedItem.title,
+      searchText: value
+    }));
   };
+
+
   render() {
     return (
       <Row className="channel-container">
@@ -155,7 +172,7 @@ class Channel extends Component {
           />
         </Col>
         <Col span={24}>
-          <CarouselMenu menus={menus} />
+          <CarouselMenu onSelecte={this.onSelecte} menus={menus} />
           <Search
             placeholder="关键词搜索"
             onSearch={this.onSearch}
