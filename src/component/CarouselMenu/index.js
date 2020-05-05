@@ -10,9 +10,10 @@ export default class CarouselMenu extends Component {
     nowSelected: 0,
   };
   componentDidMount() {
-    const { perPageCount = 6, menus = [] } = this.props;
+    const { perPageCount = 6, menus = [], defaultSelecte = 0 } = this.props;
     this.setState({
       totalPageNum: menus.length && Math.ceil(menus.length / perPageCount),
+      nowSelected: defaultSelecte
     });
   }
   handleSwitch(type) {
@@ -33,6 +34,10 @@ export default class CarouselMenu extends Component {
   }
 
   onSelecte = (item) => {
+    const { nowSelected } = this.state;
+    if (item.id === nowSelected) {
+      item = {}
+    }
     this.props.onSelecte && this.props.onSelecte(item)
     this.setState({
       nowSelected: item.id
@@ -78,7 +83,7 @@ export default class CarouselMenu extends Component {
                       <Button className="nav-menu-btn">{item.title}</Button>
                     )} */}
                   <Button
-                    className={this.state.nowSelected === item.id ? 'nav-menu-btn-selected' : 'nav-menu-btn'}
+                    className={Number(this.state.nowSelected) === Number(item.id) ? 'nav-menu-btn-selected' : 'nav-menu-btn'}
                   // className="nav-menu"
                   >{item.title}</Button>
                 </Card>

@@ -24,7 +24,7 @@ export default class Pass extends Component {
     return (
       <React.Fragment>
         {passMenus.map(menu => (
-          <NavLink to={`/pass/platform/${menu.id}`} key={menu.id} className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} >
+          <NavLink to={`/pass/platform/${menu.id}/${menu.title}`} key={menu.id} className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} >
             <div onMouseEnter={e => this.handleEnter(e)} onMouseLeave={e => this.handleLeave(e)}>
               <p>{menu.title}</p>
               <p>{menu.desc}</p>

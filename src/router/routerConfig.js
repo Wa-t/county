@@ -52,7 +52,7 @@ const routes = [
         exact: true
       },
       {
-        path: '/pass/platform/:id',
+        path: '/pass/platform/:id/:title',
         component: Platform,
         name: '郡县通平台',
       }

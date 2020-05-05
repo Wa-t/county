@@ -6,7 +6,7 @@ import CarouselMenu from "../../component/CarouselMenu";
 import banner_03 from "../../assets/images/banner_03.png";
 import { checkFull } from "../../utils";
 import "./index.less";
-import { updateState, getVideos } from "../../actions/channel";
+import { getVideos } from "../../actions/channel";
 import { connect } from "react-redux";
 import { menus } from "./menus";
 
@@ -37,7 +37,7 @@ class Channel extends Component {
         alert("11");
       }
     };
-    this.onSearch()
+    this.queryData()
   }
 
 
@@ -100,7 +100,9 @@ class Channel extends Component {
         <List
           itemLayout="vertical"
           size="small"
+          locale={{ emptyText: '暂无数据' }}
           dataSource={videos}
+          style={{ minHeight: 300 }}
           renderItem={(item) => (
             <List.Item
               key={item.id}
@@ -141,23 +143,28 @@ class Channel extends Component {
     );
   }
 
+
+
   onSelecte = (item) => {
     console.log(item);
     this.setState({
       selectedItem: item
-    }, this.onSearch)
+    }, this.queryData)
+  }
+
+  queryData = () => {
+    const { dispatch } = this.props;
+    const { selectedItem: { title: tag }, searchText } = this.state;
+    dispatch(getVideos({
+      tag,
+      searchText,
+    }));
   }
 
   onSearch = (value) => {
-    const { dispatch } = this.props;
-    const { selectedItem = {} } = this.state;
     this.setState({
       searchText: value
-    })
-    dispatch(getVideos({
-      tag: selectedItem.title,
-      searchText: value
-    }));
+    }, this.queryData)
   };
 
 
