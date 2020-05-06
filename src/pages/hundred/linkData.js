@@ -22,7 +22,7 @@ const navMenu = [
   {
     id: 6,
     name: '榜单申报',
-    address: '#'
+    address: '#/declaration'
   },
   {
     id: 7,

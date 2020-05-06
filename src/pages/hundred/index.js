@@ -17,10 +17,16 @@ import voteQRCode from '../../assets/images/vote_qrcode.png';
 import { notices, news, reports, sponsers } from './listData';
 import { navMenu } from './linkData';
 import { inProgressList, publishList, noPublishList } from './data';
+import publish10 from '../../assets/images/publish10.png'
+import publish100 from '../../assets/images/publish100.png'
+import publishReport from '../../assets/images/publish-report.png'
+import publishNews from '../../assets/images/publish-news.png'
+import unPublish from '../../assets/images/unPublish.png'
 
 const { Option } = Select;
 const BreadcrumbItem = Breadcrumb.Item;
 const { TabPane } = Tabs;
+
 
 
 class HundredCounty extends Component {
@@ -57,7 +63,7 @@ class HundredCounty extends Component {
   renderTabs = () => {
     return (
       <Card className="tabs-card">
-        <Tabs defaultActiveKey="1" type="card" >
+        <Tabs defaultActiveKey="1" >
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
               {this.renderInProgress()}
@@ -90,7 +96,7 @@ class HundredCounty extends Component {
     return (
       <ul className="selecting">
         {
-          inProgressList.map((o, i) => {
+          inProgressList.map((item, i) => {
             return (
               <li key={i} >
               <div className="left">
@@ -98,11 +104,13 @@ class HundredCounty extends Component {
                 <Button  className="selecting-tag">榜单冠名</Button>
               </div>
               <div className="center">
-                <div className="title">{o}</div>
-                <div>发布时间：2020年4月14日</div>
+                <div className="title">{item.title}</div>
+              <div>发布时间：{item.time}</div>
               </div>
               <div className="right">
-                我要投票
+                <Popover key={item.id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                    <div> 我要投票</div>
+                </Popover>
               </div>
             </li>
             )
@@ -121,14 +129,22 @@ class HundredCounty extends Component {
             return (
               <li key={index}>
                 <div className="left">
-                  <div className="title">{item}</div>
-                  <div className="time">发布时间：2020年4月14日</div>
+                  <div className="title">{item.title}</div>
+               <div className="time">发布时间：{item.time}</div>
                 </div>
                 <div className="right">
-                  <button>十佳榜</button>
-                  <button>百佳榜</button>
-                  <button>榜单<br />报告</button>
-                  <button>榜单<br />新闻</button>
+                  <div>
+                    <img style={{ width: '100%' }} src={publish10} alt=""  />
+                  </div>
+                  <div>
+                    <img style={{ width: '100%' }} src={publish100} alt=""  />
+                  </div>
+                  <div>
+                    <img style={{ width: '100%' }} src={publishReport} alt=""  />
+                  </div>
+                  <div>
+                    <img style={{ width: '100%' }} src={publishNews} alt="" />
+                  </div>
                 </div>
               </li>
             )
@@ -146,10 +162,13 @@ class HundredCounty extends Component {
           noPublishList.map((item, index) => {
             return (
               <li key={index}>
-                <div className="left">2020<br />四月</div>
+                {/* <div className="left">{getYear(item.time)}<br />{getMonthZh(item.time)}</div> */}
+                <div className="left">
+                  <img src={unPublish} alt="" />
+                </div>
                 <div className="right">
-                  <div className="title">{item}</div>
-                  <div className="time">发布时间：2020年4月14日</div>
+                  <div className="title">{item.title}</div>
+                <div className="time">发布时间：{item.time}</div>
                 </div>
               </li>
             )
@@ -167,7 +186,7 @@ class HundredCounty extends Component {
           {getFieldDecorator('note', {
             rules: [{ required: true, message: 'Please input your note!' }],
           })(
-            <Select placeholder="选择县域" onChange={this.handleSelectChange}>
+            <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
               <Option value="1">2020中国县域电子商务百强榜</Option>
               <Option value="2">2020中国礼仪百佳县市</Option>
               <Option value="3">2020中国春季休闲百佳县市</Option>
@@ -180,7 +199,7 @@ class HundredCounty extends Component {
           {getFieldDecorator('gender', {
             rules: [{ required: true, message: 'Please select your gender!' }],
           })(
-            <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
+            <Select placeholder="选择县域" onChange={this.handleSelectChange}>
               <Option value="1">130102 河北 石家庄市 长安区</Option>
               <Option value="2">130104 河北 石家庄市 桥西区</Option>
               <Option value="3">130105 河北 石家庄市 新华区</Option>
@@ -219,7 +238,8 @@ class HundredCounty extends Component {
                     {item.name}
                   </Button>
                 );
-              } else if (parseInt(item.id) === 7) {
+              } else 
+              if (parseInt(item.id) === 7) {
                 return (
                   <Popover key={item.id} placement="bottom" trigger="click" content={<img width="145px" src={voteQRCode} alt="vote" />}>
                     <Button>{item.name}</Button>
@@ -280,8 +300,12 @@ class HundredCounty extends Component {
                 dataSource={notices}
                 renderItem={item => (
                   <List.Item>
-                    <span>{item.title}</span>
-                    <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    <a href="https://www.clgnews.com/notice_list/1">
+                      <span>{item.title}</span>
+                    </a>
+                    <a href="https://www.clgnews.com/notice_list/1">
+                      <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    </a>
                   </List.Item>
                 )}
               ></List>
@@ -308,8 +332,12 @@ class HundredCounty extends Component {
                 dataSource={news}
                 renderItem={item => (
                   <List.Item>
-                    <span>{item.title}</span>
-                    <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                   <a href="https://www.clgnews.com/news_list/bangdannews/1">
+                      <span>{item.title}</span>
+                    </a>
+                    <a href="https://www.clgnews.com/news_list/bangdannews/1">
+                      <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    </a>
                   </List.Item>
                 )}
               ></List>
@@ -336,8 +364,12 @@ class HundredCounty extends Component {
                 dataSource={reports}
                 renderItem={item => (
                   <List.Item>
-                    <span>{item.title}</span>
-                    <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    <a href="https://www.clgnews.com/report_list/1">
+                      <span>{item.title}</span>
+                    </a>
+                    <a href="https://www.clgnews.com/report_list/1">
+                      <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    </a>
                   </List.Item>
                 )}
               ></List>
@@ -364,8 +396,12 @@ class HundredCounty extends Component {
                 dataSource={sponsers}
                 renderItem={item => (
                   <List.Item>
-                    <span>{item.title}</span>
-                    <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    <a href="https://www.clgnews.com/business_list/1">
+                      <span>{item.title}</span>
+                    </a>
+                    <a href="https://www.clgnews.com/business_list/1">
+                      <span>{moment(item.time).format('YYYY-MM-DD')}</span>
+                    </a>
                   </List.Item>
                 )}
               ></List>
@@ -394,7 +430,7 @@ class HundredCounty extends Component {
             <Button key="submit" type="primary" onClick={this.hideModal}>确定</Button>
           ]}
         >
-          <p>站点正在建设中</p>
+          <p>正在开发中...</p>
         </Modal>
       </Row>
     );
