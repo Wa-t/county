@@ -4,6 +4,7 @@ import HundredCounty from '../pages/hundred';
 import Channel from '../pages/channel';
 import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
+import Article from '../pages/pass/article'
 import About from '../pages/about';
 import Member from '../pages/member';
 import Cooperation from '../pages/cooperation';
@@ -18,7 +19,7 @@ const routes = [
     isShow: false,
   },
   {
-    path: '/app',
+    path: '/bang',
     component: HundredCounty,
     name: '百县榜',
   },
@@ -50,6 +51,11 @@ const routes = [
         component: Pass,
         name: '郡县通',
         exact: true
+      },
+      {
+        path: '/pass/platform/:id/:title/:name',
+        component: Platform,
+        name: '郡县通文章',
       },
       {
         path: '/pass/platform/:id/:title',

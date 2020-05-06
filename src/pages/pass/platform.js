@@ -7,7 +7,7 @@ import Article from '../../component/Article';
 import './index.less';
 import './platform.less';
 import { passMenus } from './passMenus';
-import { getArticals } from "../../actions/platform";
+import { getArticals, updateState } from "../../actions/platform";
 import { connect } from "react-redux";
 
 
@@ -19,7 +19,8 @@ class Platform extends Component {
     this.state = {
       nowSeleted: 0,
       selectedItem: { ...props.match.params },
-      searchText: ''
+      searchText: '',
+      nowArticle: {}
     }
   }
   componentDidMount() {
@@ -50,7 +51,11 @@ class Platform extends Component {
   };
 
   viewDetail = (item) => {
-    console.log(item)
+    this.props.dispatch(updateState({
+      nowArticle: item
+    }))
+    this.props.history.push(`${this.props.match.url}${item.title}`)
+
   }
 
   handleEnter = (e) => {
@@ -64,8 +69,11 @@ class Platform extends Component {
     e.currentTarget.classList.remove('pass-menu-active');
   }
 
+
+
   render() {
-    const { articals } = this.props;
+    const { articals, nowArticle = {} } = this.props;
+    const { name } = this.props.match.params;
     return (
       <Row className="pass-platform-container">
         <Col span={24}>
@@ -75,54 +83,60 @@ class Platform extends Component {
           <CarouselMenu onSelecte={this.onSelecte} menus={passMenus} perPageCount={8} defaultSelecte={this.state.selectedItem.id} />
           <Search placeholder="关键词搜索" onSearch={this.onSearch} enterButton size="large" />
 
-          <List
-            style={{ minHeight: 300, marginBottom: 100 }}
-            itemLayout="vertical"
-            size="large"
-            locale={{ emptyText: '暂无数据' }}
-            dataSource={articals}
-            renderItem={item => (
-              <List.Item
-                key={item.id}
-              >
-                <div className="list-item">
+          {!name ?
+            <List
+              style={{ minHeight: 300, marginBottom: 100 }}
+              itemLayout="vertical"
+              size="large"
+              locale={{ emptyText: '暂无数据' }}
+              dataSource={articals}
+              renderItem={item => (
+                <List.Item
+                  key={item.id}
+                >
+                  <div className="list-item">
 
-                  {item.extendInfo ?
-                    <div className="img">
-                      <img alt="" width="200" src={item.extendInfo && item.extendInfo.split(',')[0]}></img>
-                    </div>
-                    : null
-                  }
-                  <div className="right">
-                    <div className="title">
-                      {item.title}
-                    </div>
-                    <div className="content">
-                      {`${item.content.slice(0, 70)}.....`}
-                    </div>
+                    {item.extendInfo ?
+                      <div className="img">
+                        <img alt="" width="200" src={item.extendInfo && item.extendInfo.split(',')[0]}></img>
+                      </div>
+                      : null
+                    }
+                    <div className="right">
+                      <div className="title">
+                        {item.title}
+                      </div>
+                      <div className="content">
+                        {`${item.content.slice(0, 70)}.....`}
+                      </div>
 
-                    <div className="footer">
-                      <span className="publish">发布时间：{item.time}</span>
-                      <span className="tag">{item.tag} </span>
-                    </div>
+                      <div className="footer">
+                        <span className="publish">发布时间：{item.time}</span>
+                        <span className="tag">{item.tag} </span>
+                      </div>
 
-                    <div style={{ marginTop: 20 }}>
-                      <Button
-                        style={{
-                          backgroundColor: '#3652cb',
-                          color: '#FFF'
-                        }}
-                        onClick={(item) => this.viewDetail(item)}
-                        shape="round">
-                        阅读详情
+                      <div style={{ marginTop: 20 }}>
+                        <Button
+                          style={{
+                            backgroundColor: '#3652cb',
+                            color: '#FFF'
+                          }}
+                          onClick={() => this.viewDetail(item)}
+                          shape="round">
+                          阅读详情
                         </Button>
+                      </div>
                     </div>
-                  </div>
 
-                </div>
-              </List.Item>
-            )}
-          />
+                  </div>
+                </List.Item>
+              )}
+            />
+            : <div className="article">
+              <h2 className="title">{nowArticle.title}</h2>
+              <div className="content">{nowArticle.content}</div>
+            </div>
+          }
           {/* <Article /> */}
         </Col>
       </Row>
