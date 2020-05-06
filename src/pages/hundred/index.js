@@ -105,7 +105,7 @@ class HundredCounty extends Component {
               </div>
               <div className="center">
                 <div className="title">{item.title}</div>
-              <div>发布时间：{item.time}</div>
+                <div>发布时间：{item.time}</div>
               </div>
               <div className="right">
                 <Popover key={item.id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
@@ -134,16 +134,25 @@ class HundredCounty extends Component {
                 </div>
                 <div className="right">
                   <div>
-                    <img style={{ width: '100%' }} src={publish10} alt=""  />
+                    <a href={`${item.link}/#px10`} target="_blank" rel="noopener noreferrer">
+                      <img style={{ width: '100%' }} src={publish10} alt="" />
+                    </a>
                   </div>
                   <div>
-                    <img style={{ width: '100%' }} src={publish100} alt=""  />
+                    <a href={`${item.link}/#px100`} target="_blank" rel="noopener noreferrer">
+                      <img style={{ width: '100%' }} src={publish100} alt="" />
+                    </a>
                   </div>
                   <div>
-                    <img style={{ width: '100%' }} src={publishReport} alt=""  />
+                    <a href={`${item.link}`} target="_blank" rel="noopener noreferrer">
+                     <img style={{ width: '100%' }} src={publishReport} alt=""  />
+                    </a>
                   </div>
                   <div>
-                    <img style={{ width: '100%' }} src={publishNews} alt="" />
+                  
+                    <a href="https://www.clgnews.com/news_list/bangdannews/1" target="_blank" rel="noopener noreferrer">
+                      <img style={{ width: '100%' }} src={publishNews} alt="" />
+                    </a>
                   </div>
                 </div>
               </li>

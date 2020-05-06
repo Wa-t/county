@@ -36,83 +36,103 @@ const inProgressList = [ // 进行中
 const publishList = [ // 已发布
     {
         title: '中国县域电子商务百强榜',
-        time: '2020-01-01'
+        time: '2020-01-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfab'
     },// 已发布
     {
         title: '中国礼仪百佳县市',
-        time: '2020-01-01'
+        time: '2020-01-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfac'
     },// 已发布
     {
         title: '中国春季休闲百佳县市',
-        time: '2020-01-01'
+        time: '2020-01-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfad'
     },// 已发布
     {
         title: '中国县域消费百强榜',
-        time: '2020-01-01'
+        time: '2020-01-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfae'
     },// 已发布
     {
         title: '中国县域文化消费百强榜',
-        time: '2020-01-21'
+        time: '2020-01-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfaf'
     },// 已发布
     {
         title: '中国县域网购百强榜',
-        time: '2020-01-21'
+        time: '2020-01-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb0'
     },
     {
         title: '中国县域潮品消费百强榜',
-        time: '2020-02-01'
+        time: '2020-02-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb1'
     },
     {
         title: '中国特色小吃百佳县市',
-        time: '2020-02-01'
+        time: '2020-02-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb2'
     },
     {
         title: '中国美食百佳县市',
-        time: '2020-02-21'
+        time: '2020-02-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb3'
     },
     {
         title: '中国食品安全百佳县市',
-        time: '2020-02-21'
+        time: '2020-02-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb4'
     },
     {
         title: '中国最具发展潜力百佳县市',
-        time: '2020-03-01'
+        time: '2020-03-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb5'
     },
     {
         title: '中国青年乐业百佳县市',
-        time: '2020-03-01'
+        time: '2020-03-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4'
     },
     {
         title: '中国县域双创活力百佳榜',
-        time: '2020-03-21'
+        time: '2020-03-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb7'
     },
     {
         title: '中国慈善公益百佳县市',
-        time: '2020-03-21'
+        time: '2020-03-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb8'
     },
     {
         title: '中国夏季休闲百佳县市',
-        time: '2020-04-01'
+        time: '2020-04-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfb9'
     },
     {
         title: '中国夜经济繁荣百佳县市',
-        time: '2020-04-01'
+        time: '2020-04-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfba'
     },// 已发布
     {
         title: '中国医疗服务百佳县市',
-        time: '2020-04-21'
+        time: '2020-04-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfbb'
     },// 已发布
     {
         title: '中国健康产业百佳县市',
-        time: '2020-04-21'
+        time: '2020-04-21',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfbc'
     },// 已发布
     {
         title: '中国最具绿意百佳县市',
-        time: '2020-05-01'
+        time: '2020-05-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfbd'
     },// 已发布
     {
         title: '中国百佳净水县市',
-        time: '2020-05-01'
+        time: '2020-05-01',
+        link: 'https://www.clgnews.com/report/detail/5e2264a591035c430d6edfbe'
     },
 ]
 
