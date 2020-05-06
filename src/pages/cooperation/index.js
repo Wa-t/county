@@ -5,8 +5,10 @@ import Banner from '../../component/Banner';
 import './index.less';
 import banner_02 from '../../assets/images/banner_02.png';
 import summary from '../../assets/images/summary.png'
+import {getUrlParams} from '../../utils';
 
 const BreadcrumbItem = Breadcrumb.Item;
+
 
 class Cooperation extends Component {
   columns= [
@@ -50,12 +52,11 @@ class Cooperation extends Component {
                 </div>
     },
   ]
-
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
+  componentDidMount() {
+    const urlParams = getUrlParams()
+      const { id } = urlParams
+      const summaryReport = document.querySelector(`#${id}`)
+      if (summaryReport) summaryReport.scrollIntoView() 
   }
 
   render() {
@@ -165,7 +166,7 @@ class Cooperation extends Component {
          
          
           <h4 className="section-title">链接信息三:2020 中国县域发展榜榜单发布总表</h4>
-          <Card className="summary-card" bodyStyle={{ padding: 56 }}>
+          <Card id="summary-report" className="summary-card" bodyStyle={{ padding: 56 }}>
             <img style={{ width: '100%' }} src={summary} alt="" /></Card>
             
           </div>

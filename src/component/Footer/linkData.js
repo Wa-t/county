@@ -11,8 +11,8 @@ export const footerMenu = [
   },
   {
     id: 3,
-    name: '会员加盟',
-    address: 'https://www.clgnews.com/tong'
+    name: '会员中心',
+    address: '/#/member'
   },
   {
     id: 4,

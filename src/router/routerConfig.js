@@ -9,6 +9,7 @@ import About from '../pages/about';
 import Member from '../pages/member';
 import Cooperation from '../pages/cooperation';
 import HundredDetail from '../pages/hundredDetail';
+import Declaration from '../pages/declaration'
 
 
 const routes = [
@@ -76,6 +77,13 @@ const routes = [
     name: '百县榜详情',
     isShow: false
   },
+  {
+    path: '/declaration',
+    component: Declaration,
+    name: '榜单申报',
+    isShow: false
+  },
+  
   {
     path: '/age3',
     component: null,

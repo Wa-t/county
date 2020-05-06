@@ -1,10 +1,5 @@
 const navMenu = [
   {
-    id: 1,
-    name: '榜单查询',
-    address: '#'
-  },
-  {
     id: 2,
     name: '榜单公告',
     address: 'https://www.clgnews.com/notice_list/1'
@@ -27,7 +22,7 @@ const navMenu = [
   {
     id: 6,
     name: '榜单申报',
-    address: '#'
+    address: '#/declaration'
   },
   {
     id: 7,
