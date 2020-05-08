@@ -3,7 +3,7 @@ export const countyModules = [
     id: 1,
     title: '郡县榜',
     desc: '中国县域发展榜',
-    path: '/app',
+    path: '/bang',
   },
   {
     id: 2,

@@ -3,7 +3,7 @@ import { Row, Col, Input, List, Button } from 'antd';
 import Banner from '../../component/Banner';
 import CarouselMenu from '../../component/CarouselMenu';
 import banner_04 from '../../assets/images/banner_04.png';
-import Article from '../../component/Article';
+import Article from './article';
 import './index.less';
 import './platform.less';
 import { passMenus } from './passMenus';
@@ -24,7 +24,7 @@ class Platform extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log(this.props, '333333333')
     this.queryData()
   }
 
@@ -51,23 +51,13 @@ class Platform extends Component {
   };
 
   viewDetail = (item) => {
-    this.props.dispatch(updateState({
-      nowArticle: item
-    }))
-    this.props.history.push(`${this.props.match.url}${item.title}`)
+    // this.props.dispatch(updateState({
+    //   nowArticle: item
+    // }))
+    this.props.history.push(`${this.props.match.url}/${item.title}`)
 
   }
 
-  handleEnter = (e) => {
-    // 预检测初始化放大的 menu
-    if (document.querySelector('.pass-menu-item:nth-child(8)').hasAttribute('class', 'pass-menu-active')) {
-      document.querySelector('.pass-menu-item:nth-child(8)').classList.remove('pass-menu-active');
-    }
-    e.currentTarget.classList.add('pass-menu-active');
-  }
-  handleLeave = (e) => {
-    e.currentTarget.classList.remove('pass-menu-active');
-  }
 
 
 
@@ -132,10 +122,7 @@ class Platform extends Component {
                 </List.Item>
               )}
             />
-            : <div className="article">
-              <h2 className="title">{nowArticle.title}</h2>
-              <div className="content">{nowArticle.content}</div>
-            </div>
+            : <Article title={name} />
           }
           {/* <Article /> */}
         </Col>

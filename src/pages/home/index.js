@@ -16,24 +16,13 @@ class HomePage extends Component {
     this.setState({
       carouselCount: this.refs.carousel.props.children.length,
     });
-    var videoDOMs = document.querySelectorAll(".video-panel video");
+    // var videoDOMs = document.querySelectorAll(".video-panel video");
     // 防止复制的 video 也进行播放
-    videoDOMs[0].innerHTML = "";
-    videoDOMs[2].innerHTML = "";
+    // videoDOMs[0].innerHTML = "";
+    // videoDOMs[2].innerHTML = "";
   }
   renderCarouselVedioItem(type = "carouse") {
-    const config =
-      type === "carouse"
-        ? {
-          // style: {
-          //   width: "100%",
-          // },
-        }
-        : {
-          // style: {
-          //   width: "60%",
-          // },
-        };
+
     //autoplay="autoplay" loop="loop"
     const { currentCarouselIdx } = this.state;
     return (
@@ -49,7 +38,6 @@ class HomePage extends Component {
           // autoPlay="autoplay"
           loop="loop"
           autostart="true"
-          {...config}
         >
           <source
             src="https://cdn.clgnews.com/video/site.mp4"
@@ -132,7 +120,6 @@ class HomePage extends Component {
     }
   }
   handleChange(current) {
-    console.log(current);
     this.setState({
       currentCarouselIdx: current,
     });
@@ -147,7 +134,7 @@ class HomePage extends Component {
     const { currentCarouselIdx, carouselCount } = this.state;
     return (
       <div className="carousel-container">
-        <Button
+        {/* <Button
           className="switch-btn prev"
           shape="circle"
           icon="left"
@@ -160,13 +147,13 @@ class HomePage extends Component {
           icon="right"
           onClick={() => this.handleSwitch("next")}
           disabled={currentCarouselIdx === carouselCount - 1}
-        ></Button>
+        ></Button> */}
         <Carousel
           ref="carousel"
           afterChange={(current) => this.handleChange(current)}
         >
           {this.renderCarouselModuleItem()}
-          {this.renderCarouselVedioItem()}
+          {/* {this.renderCarouselVedioItem()} */}
         </Carousel>
       </div>
     );
