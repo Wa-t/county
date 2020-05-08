@@ -204,7 +204,7 @@ const Article = ({ title }) => {
       {nowArticle.extendInfo ?
         <div className="images">
           {nowArticle.extendInfo.split(',').map((img, key) => (
-            <div className="img" >
+            <div className="img" key={key}>
               <div className="fujian">附件 {key + 1}</div>
               <img className="img" alt="" src={img} />
             </div>

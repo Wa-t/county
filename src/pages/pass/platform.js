@@ -20,7 +20,6 @@ class Platform extends Component {
       nowSeleted: 0,
       selectedItem: { ...props.match.params },
       searchText: '',
-      nowArticle: {}
     }
   }
   componentDidMount() {
@@ -29,7 +28,7 @@ class Platform extends Component {
   }
 
   onSelecte = (item) => {
-    console.log(item);
+    this.props.history.replace(`/pass/platform/${item.id}/${item.title}`);
     this.setState({
       selectedItem: item
     }, this.queryData)
@@ -51,18 +50,14 @@ class Platform extends Component {
   };
 
   viewDetail = (item) => {
-    // this.props.dispatch(updateState({
-    //   nowArticle: item
-    // }))
     this.props.history.push(`${this.props.match.url}/${item.title}`)
-
   }
 
 
 
 
   render() {
-    const { articals, nowArticle = {} } = this.props;
+    const { articals } = this.props;
     const { name } = this.props.match.params;
     return (
       <Row className="pass-platform-container">

@@ -4,7 +4,6 @@ import HundredCounty from '../pages/hundred';
 import Channel from '../pages/channel';
 import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
-import Article from '../pages/pass/article'
 import About from '../pages/about';
 import Member from '../pages/member';
 import Cooperation from '../pages/cooperation';
@@ -83,7 +82,7 @@ const routes = [
     name: '榜单申报',
     isShow: false
   },
-  
+
   {
     path: '/age3',
     component: null,
