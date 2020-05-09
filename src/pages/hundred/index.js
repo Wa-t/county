@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs, Icon } from 'antd';
 import moment from 'moment';
+import WaitModal from '../../component/WaitModal'
 import QuickEntry from '../../component/QuickEntry';
 import Banner from '../../component/Banner';
 import './index.less';
@@ -279,8 +280,8 @@ class HundredCounty extends Component {
           <Col xs={24} xl={10}>
             {this.renderTabs()}
             <QuickEntry href="#/cooperation?id=summary-report" entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF'}}/>
-            <QuickEntry entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
-            <QuickEntry entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
+            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
+            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
           </Col>
           <Col xs={24} xl={14}>
              <Card
@@ -451,18 +452,7 @@ class HundredCounty extends Component {
         >
           <p>很遗憾没有入选！</p>
         </Modal>
-        <Modal
-          title="提示"
-          okText="确定"
-          visible={declareVisible}
-          onOk={this.hideModal}
-          onCancel={this.hideModal}
-          footer={[
-            <Button key="submit" type="primary" onClick={this.hideModal}>确定</Button>
-          ]}
-        >
-          <p>正在开发中...</p>
-        </Modal>
+        <WaitModal visible={declareVisible} onOk={this.hideModal} onCancel={this.hideModal} />
       </Row>
     );
   }
