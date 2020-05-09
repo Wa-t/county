@@ -7,7 +7,7 @@ export const footerMenu = [
   {
     id: 2,
     name: '客服中心',
-    address: 'https://www.clgnews.com/tong'
+    address: '/#/service'
   },
   {
     id: 3,
