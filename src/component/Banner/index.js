@@ -10,7 +10,8 @@ const Banner = props => {
     <div className="header-banner-container" style={bannerStyle}>
       <div className="hundred-slogan">
         <p>{title}</p>
-        <p>{desc}</p>
+        <p />
+        {/* <p>{desc}</p> */}
       </div>
     </div>
   );
