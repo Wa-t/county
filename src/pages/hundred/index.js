@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs, Icon } from 'antd';
+import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs, Icon,Skeleton } from 'antd';
 import moment from 'moment';
 import WaitModal from '../../component/WaitModal'
 import QuickEntry from '../../component/QuickEntry';
@@ -37,6 +37,7 @@ class HundredCounty extends Component {
     this.state = {
       visible: false,
       declareVisible: false,
+      searchResultList: []
     }
   }
 
@@ -51,8 +52,20 @@ class HundredCounty extends Component {
       declareVisible: true
     })
   }
-  handleSearchClick = () => {
-    this.showModal();
+  handleSearchClick = (e) => {
+    const { searchList = [] } = this.props.data;
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+      const { bangId } = values
+      const searchResultList = searchList.filter(item => item._id === bangId)
+      this.setState({
+        searchResultList
+      })
+    });
+    // this.showModal();
   }
   showModal() {
     this.setState({
@@ -75,23 +88,24 @@ class HundredCounty extends Component {
 
 
   renderTabs = () => {
+    
     return (
       <Card className="tabs-card">
         <Tabs defaultActiveKey="1" >
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
-              {this.renderInProgress()}
+              { this.renderInProgress() }
             </div>
           </TabPane>
           <TabPane tab="已发布榜单" key="2">
             <div className="tab-pane-box">
-              {this.renderPublish()}
+              { this.renderPublish()}
             </div>
           
           </TabPane>
           <TabPane tab="未发布榜单" key="3">
           <div className="tab-pane-box">
-              {this.renderNoPublish()}
+              { this.renderNoPublish()}
             </div>
           </TabPane>
 
@@ -107,31 +121,32 @@ class HundredCounty extends Component {
 
   renderInProgress = () => {
     const { loading } = this.props;
-
     const currentList = this.getFilterList(1) // 1进行中
     return (
       <ul className="selecting">
-        {
-          currentList.map((item, i) => {
-            return (
-              <li key={i} >
-              <div className="left">
-                <Button  className="selecting-tag">榜单公告</Button>
-                <Button  className="selecting-tag">榜单冠名</Button>
-              </div>
-              <div className="center">
-                <div className="title">{item.title}</div>
-                <div>发布时间：{item.date}</div>
-              </div>
-              <div className="right">
-                <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
-                    <div> 我要投票</div>
-                </Popover>
-              </div>
-            </li>
-            )
-          })
-        }
+        <Skeleton loading={loading} >
+          {
+            currentList.map((item, i) => {
+              return (
+                <li key={i} >
+                <div className="left">
+                  <Button  className="selecting-tag">榜单公告</Button>
+                  <Button  className="selecting-tag">榜单冠名</Button>
+                </div>
+                <div className="center">
+                  <div className="title">{item.title}</div>
+                  <div>发布时间：{item.date}</div>
+                </div>
+                <div className="right">
+                  <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                      <div> 我要投票</div>
+                  </Popover>
+                </div>
+              </li>
+              )
+            })
+          }
+        </Skeleton>
       </ul>
     )
   }
@@ -141,6 +156,7 @@ class HundredCounty extends Component {
     const currentList = this.getFilterList(3) // 3已发布（已结束）
     return (
       <ul className="publish">
+        <Skeleton loading={loading} >
         {
           currentList.map((item, index) => {
             const link = `https://www.clgnews.com/report/detail/${item._id}`
@@ -179,14 +195,18 @@ class HundredCounty extends Component {
             )
           })
         }
+        </Skeleton>
+        
       </ul>
     )
   }
 
   renderNoPublish = () => {
+    const { loading } = this.props;
     const currentList = this.getFilterList(0) // 0未发布（待启动）
     return (
       <ul className="no-publish">
+        <Skeleton loading={loading} >
         {
           currentList.map((item, index) => {
             return (
@@ -202,44 +222,59 @@ class HundredCounty extends Component {
             )
           })
         }
+        </Skeleton>
+        
       </ul>
     )
   }
 
   renderSearchList() {
     const { getFieldDecorator } = this.props.form;
+    const { searchList = [] } = this.props.data;
+    const { searchResultList } = this.state;
     return (
-      <Form labelCol={{ span: 6 }} wrapperCol={{ span: 16 }} onSubmit={this.handleSubmit}>
-        <Form.Item label="榜单">
-          {getFieldDecorator('note', {
-            rules: [{ required: true, message: 'Please input your note!' }],
-          })(
-            <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
-              <Option value="1">2020中国县域电子商务百强榜</Option>
-              <Option value="2">2020中国礼仪百佳县市</Option>
-              <Option value="3">2020中国春季休闲百佳县市</Option>
-              <Option value="4">2020中国县域消费百强榜</Option>
-              <Option value="5">2020中国县域文化消费百强榜</Option>
-            </Select>
-          )}
-        </Form.Item>
-        <Form.Item label="县域">
-          {getFieldDecorator('gender', {
-            rules: [{ required: true, message: 'Please select your gender!' }],
-          })(
-            <Select placeholder="选择县域" onChange={this.handleSelectChange}>
-              <Option value="1">130102 河北 石家庄市 长安区</Option>
-              <Option value="2">130104 河北 石家庄市 桥西区</Option>
-              <Option value="3">130105 河北 石家庄市 新华区</Option>
-            </Select>
-          )}
-        </Form.Item>
-        <Form.Item wrapperCol={{ span: 16, offset: 6 }}>
-          <Button style={{ width: '100%' }} type="primary" htmlType="submit" onClick={this.handleSearchClick}>
-            查询
-          </Button>
-        </Form.Item>
-      </Form>
+      <div>
+        <Form labelCol={{ span: 6 }} wrapperCol={{ span: 16 }} onSubmit={this.handleSubmit}>
+          <Form.Item label="榜单">
+            {getFieldDecorator('bangId', {
+              rules: [{ required: true, message: '请选择榜单' }],
+            })(
+              <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
+                {
+                  searchList.map(item => <Option value={item._id}>{item.title}</Option>)
+                }
+              </Select>
+            )}
+          </Form.Item>
+          <Form.Item wrapperCol={{ span: 16, offset: 6 }}>
+            <Button style={{ width: '100%' }} type="primary" htmlType="submit" onClick={this.handleSearchClick}>
+              查询
+            </Button>
+          </Form.Item>
+        </Form>
+        <ul className="no-publish">
+        {
+          searchResultList.map((item, index) => {
+            return (
+              <li key={index}>
+                <div className="left">
+                  <img src={unPublish} alt="" />
+                </div>
+                <div className="right">
+                  <div className="title">
+                    <a href={`https://www.clgnews.com/report/detail/${item._id}`} target="_blank" rel="noopener noreferrer">
+                      {item.title}
+                    </a>
+                  </div>
+                <div className="time">发布时间：{item.date}</div>
+                </div>
+              </li>
+            )
+          })
+        }
+        </ul>
+      
+      </div>
     );
   }
   render() {
