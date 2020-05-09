@@ -26,7 +26,6 @@ export default class About extends Component {
     return (
         <Row className="channel-container">
           <Row>
-            
             <Col span={24}>
               <Banner backgroundImage={banner_04} title="关于郡县" desc="县域赋能产品中心" />
             </Col>
@@ -42,7 +41,8 @@ export default class About extends Component {
             </Col>
           </Row>
           <Row>
-            <div className="page-title">关于郡县网</div>
+            <div className="page-title-h1">郡县网：中国县域发展赋能专网</div>
+            <div className="page-title-h2">天下治，郡县安</div>
             <div className="about-page-img">
               <img src={aboutImg} alt="" />
             </div>
@@ -59,26 +59,6 @@ export default class About extends Component {
 个县域开辟县域新闻资讯联播专区，日均上线县域资讯逾30000条，网站拥有百万级关注读者，日均阅读流量逾千万。郡县网关注民生，服务县域，致力于成为中国县域发展的资讯赋能专网。
             </div> 
             <div className="divider" />
-          </Row>
-          <Row>
-            <div className="page-title">联系我们</div>
-            <div className="contact-item label" >中国县域发展榜课题组邮箱：</div>
-            <div className="contact-item" >
-              <span className="label">电子邮件：</span>
-              <span>xiaokangccdl@163.com</span>
-            </div>
-            <div className="contact-item" >
-              <span className="label">王女士：</span>
-              <span>18911646939</span>
-            </div>
-            <div className="contact-item" >
-              <span className="label">孙先生：</span>
-              <span>18610150311</span>
-            </div>
-            <div className="contact-item-more" style={{ color: '#42528a', cursor: 'pointer'}} >如你需要更多信息，请前往榜单合作[YHM1]页面</div>
-            <div className="contact-item-more" style={{ marginTop: 30}} >《小康》杂志社社址：</div>
-            <div className="contact-item" >北京市朝阳区百子湾路32号苹果社区北区1号楼四层</div>
-            <div className="contact-item" >如需更多信息，请前往介绍页面</div>
           </Row>
         </Row>
     );

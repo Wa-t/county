@@ -63,7 +63,7 @@ class Cooperation extends Component {
     return (
       <Row className="hundred-county-container">
         <Col span={24}>
-          <Banner backgroundImage={banner_02} title="百县榜" desc="中国县域发展榜" />
+          <Banner backgroundImage={banner_02} title="榜单合作" desc="中国县域发展榜" />
         </Col>
         <Col className="nav-container" span={24}>
           <Breadcrumb separator=">">

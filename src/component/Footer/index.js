@@ -13,7 +13,7 @@ export default class Footer extends Component {
           {/* <Link to='http://baidu.com'>关于我们</Link> */}
           <Button.Group>
             {footerMenu.map(menu => (
-              <Button type="primary" key={menu.id} href={menu.address} target="_blank" ghost>
+              <Button type="primary" key={menu.id} href={menu.address} ghost>
                 {menu.name}
               </Button>
             ))}
