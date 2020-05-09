@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import loggedUserReducer from "../reducer/loggedUserReducer";
 import channelReducer from "../reducer/channelReducer";
 import platformReducer from '../reducer/platformReducer'
+import hundredReducer from '../reducer/hundred'
 import thunkMiddleware from "redux-thunk";
 
 const reducers = combineReducers({
   loggedUserReducer,
   channelReducer,
   platformReducer,
+  hundredReducer
 });
 
 let middlewares = [thunkMiddleware];
