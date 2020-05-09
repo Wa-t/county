@@ -26,7 +26,8 @@ export default class Index extends Component {
       <Row className="channel-container">
         <Row>
           <Col span={24}>
-            <Banner backgroundImage={banner_04} title="客服中心" desc="县域赋能产品中心" />
+            {/* <Banner backgroundImage={banner_04} title="客服中心" desc="县域赋能产品中心" /> */}
+            <Banner backgroundImage={banner_04} title="客服中心" desc="" />
           </Col>
           <Col span={24}>
             <Breadcrumb separator=">">

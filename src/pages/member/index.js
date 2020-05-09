@@ -26,7 +26,8 @@ export default class Member extends Component {
       <div>
         <Row className="channel-container">
           <Col span={24}>
-            <Banner backgroundImage={banner_04} title="会员中心" desc="县域赋能产品中心" />
+            {/* <Banner backgroundImage={banner_04} title="会员中心" desc="县域赋能产品中心" /> */}
+            <Banner backgroundImage={banner_04} title="会员中心" desc="" />
           </Col>
         </Row>
           <div>

@@ -27,7 +27,8 @@ export default class About extends Component {
         <Row className="channel-container">
           <Row>
             <Col span={24}>
-              <Banner backgroundImage={banner_04} title="关于郡县" desc="县域赋能产品中心" />
+              {/* <Banner backgroundImage={banner_04} title="关于郡县" desc="县域赋能产品中心" /> */}
+              <Banner backgroundImage={banner_04} title="关于郡县" desc="" />
             </Col>
             <Col span={24}>
               <Breadcrumb separator=">">
