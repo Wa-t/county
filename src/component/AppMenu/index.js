@@ -6,6 +6,7 @@ import './index.less';
 
 // const SubMenu = Menu.SubMenu;
 
+const newMenu = Menus.slice(0, -1)
 class AppMenu extends Component {
   state = {
     current: 'mail',
@@ -33,7 +34,7 @@ class AppMenu extends Component {
       key => this.state.openKeys.indexOf(key) === -1
     );
     if (this.rootSubmenuKeys && this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-      this.setState({openKeys: [latestOpenKey]});
+      this.setState({ openKeys: [latestOpenKey] });
     } else {
       this.setState({
         openKeys: latestOpenKey ? [latestOpenKey] : []
@@ -56,14 +57,14 @@ class AppMenu extends Component {
       <Menu
         className="menu-container"
         defaultSelectedKeys={
-          Menus.map(item => {
+          newMenu.map(item => {
             // debugger
             if (location.pathname.includes(item.path)) {
               return item.path;
             }
             return null;
           })
-          .filter(res => res !== undefined)
+            .filter(res => res !== undefined)
         }
         openKeys={this.state.openKeys}
         onClick={this.handleClick}
@@ -71,7 +72,7 @@ class AppMenu extends Component {
         selectedKeys={[this.state.current]}
         mode="horizontal"
       >
-        {Menus
+        {newMenu
           // .filter(d => this.checkModuleP(appReducer.config.auth, d))
           .map((route, i) => {
             if (route.isShow !== false) {
@@ -118,19 +119,19 @@ class AppMenu extends Component {
               //     </Menu.Item>
               //   );
               // } else {
-                return (
-                  <Menu.Item key={route.path}>
-                    {route.foreignSite ? (
-                      <a href={route.foreignSite.path} target="_blank" rel="noopener noreferrer">
-                        {route.name}
-                      </a>
-                    ) : (
+              return (
+                <Menu.Item key={route.path}>
+                  {route.foreignSite ? (
+                    <a href={route.foreignSite.path} target="_blank" rel="noopener noreferrer">
+                      {route.name}
+                    </a>
+                  ) : (
                       <NavLink to={{ pathname: route.path, state: { refresh: true } }}>
                         {route.icon && <Icon type={route.icon} />} <span>{route.name}</span>
                       </NavLink>
                     )}
-                  </Menu.Item>
-                );
+                </Menu.Item>
+              );
               // }
             }
             return null;

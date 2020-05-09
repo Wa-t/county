@@ -118,7 +118,7 @@ const routes = [
   {
     path: '*',
     component: HomePage,
-    name: '中国小康网',
+    name: '',
   },
 ];
 
