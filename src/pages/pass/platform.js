@@ -4,6 +4,7 @@ import Banner from '../../component/Banner';
 import CarouselMenu from '../../component/CarouselMenu';
 import banner_04 from '../../assets/images/banner_04.png';
 import Article from './article';
+import { getUrlParams } from '../../utils';
 import './index.less';
 import './platform.less';
 import { passMenus } from './passMenus';
@@ -24,11 +25,19 @@ class Platform extends Component {
   }
   componentDidMount() {
     console.log(this.props, '333333333')
-    this.queryData()
+    const data = getUrlParams();
+    if (data && data.value) {
+      this.setState({
+        searchText: data.value
+      }, this.queryData)
+    } else {
+      this.queryData()
+    }
+
   }
 
   onSelecte = (item) => {
-    this.props.history.replace(`/pass/platform/${item.id}/${item.title}`);
+    this.props.history.replace(`/tong/platform/${item.id || 'all'}/${item.title || 'all'}`);
     this.setState({
       selectedItem: item
     }, this.queryData)
@@ -37,10 +46,15 @@ class Platform extends Component {
   queryData = () => {
     const { dispatch } = this.props;
     const { selectedItem: { title: tag }, searchText } = this.state;
+    console.log(searchText)
     dispatch(getArticals({
       tag,
       searchText,
     }));
+  }
+
+  onInput = (e) => {
+    this.setState({ searchText: e.target.value })
   }
 
   onSearch = (value) => {
@@ -66,7 +80,7 @@ class Platform extends Component {
         </Col>
         <Col span={24} className="pass-content-cotainer">
           <CarouselMenu onSelecte={this.onSelecte} menus={passMenus} perPageCount={8} defaultSelecte={this.state.selectedItem.id} />
-          <Search placeholder="关键词搜索" onSearch={this.onSearch} enterButton size="large" />
+          <Search placeholder="关键词搜索" onChange={this.onInput} onSearch={this.onSearch} value={this.state.searchText} enterButton size="large" />
 
           {!name ?
             <List

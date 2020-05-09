@@ -24,7 +24,7 @@ export default class Pass extends Component {
     return (
       <React.Fragment>
         {passMenus.map(menu => (
-          <NavLink to={`/pass/platform/${menu.id}/${menu.title}`} key={menu.id} className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} >
+          <NavLink to={`/tong/platform/${menu.id}/${menu.title}`} key={menu.id} className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} >
             <div onMouseEnter={e => this.handleEnter(e)} onMouseLeave={e => this.handleLeave(e)}>
               <p>{menu.title}</p>
               <p>{menu.desc}</p>
@@ -53,6 +53,10 @@ export default class Pass extends Component {
       </div>
     )
   }
+
+  onSearch = (value) => {
+    this.props.history.push(`/tong/platform/all/all?value=${value}`)
+  }
   render() {
     return (
       <Row className="pass-container">
@@ -61,7 +65,7 @@ export default class Pass extends Component {
         </Col>
         <Col span={24} className="pass-content-container">
           {/* <CarouselMenu menus={menus} perPageCount={8} /> */}
-          <Search placeholder="关键词搜索" onSearch={value => console.log(value)} enterButton size="large" />
+          <Search placeholder="关键词搜索" onSearch={this.onSearch} enterButton size="large" />
           {this.renderNavModule()}
         </Col>
         <LineWave id="line-one" length={90} amplitute={80} speed={2.5} />
