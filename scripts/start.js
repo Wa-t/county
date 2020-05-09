@@ -108,6 +108,7 @@ checkBrowsers(paths.appPath, isInteractive)
     const proxySetting = require(paths.appPackageJson).proxy;
     const proxyConfig = prepareProxy(
       proxySetting,
+      // paths.proxySetup,
       paths.appPublic,
       paths.publicUrlOrPath
     );

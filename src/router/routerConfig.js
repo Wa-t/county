@@ -6,6 +6,7 @@ import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
 import About from '../pages/about';
 import Member from '../pages/member';
+import Service from '../pages/serviceCenter';
 import Cooperation from '../pages/cooperation';
 import HundredDetail from '../pages/hundredDetail';
 import Declaration from '../pages/declaration'
@@ -38,6 +39,12 @@ const routes = [
     path: '/member',
     component: Member,
     name: '会员中心',
+    isShow: false
+  },
+  {
+    path: '/service',
+    component: Service,
+    name: '客服中心',
     isShow: false
   },
   {
