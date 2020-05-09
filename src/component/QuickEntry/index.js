@@ -7,7 +7,8 @@ export default class QuickEntry extends Component {
     const { entryDesc, entryName, background, styleConfig, href="#" } = this.props;
     const cardStyle = {
       background: `url(${background}) center no-repeat`,
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      height: 138
     }
     return (
       <Card className='quick-entry-container' style={cardStyle}>

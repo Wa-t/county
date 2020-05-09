@@ -16,7 +16,6 @@ import icon_reports from '../../assets/images/icon_reports.png';
 import icon_sponsers from '../../assets/images/icon_sponsers.png';
 import voteQRCode from '../../assets/images/vote_qrcode.png';
 import { navMenu } from './linkData';
-import { inProgressList, publishList, noPublishList } from './data';
 import publish10 from '../../assets/images/publish10.png'
 import publish100 from '../../assets/images/publish100.png'
 import publishReport from '../../assets/images/publish-report.png'
@@ -37,9 +36,6 @@ class HundredCounty extends Component {
     this.state = {
       visible: false,
       declareVisible: false,
-      inProgressList: inProgressList,
-      publishList: publishList,
-      noPublishList: noPublishList
     }
   }
 
@@ -68,6 +64,14 @@ class HundredCounty extends Component {
       declareVisible: false
     });
   };
+
+  getFilterList = (filterKey) => {
+    const { list = [] } = this.props.data;
+    return list.filter(item => {
+      return item.status === filterKey
+    })
+  }
+
 
   renderTabs = () => {
     return (
@@ -101,11 +105,13 @@ class HundredCounty extends Component {
   }
 
   renderInProgress = () => {
-    const {inProgressList} = this.state
+    const { loading } = this.props;
+
+    const currentList = this.getFilterList(1) // 1进行中
     return (
       <ul className="selecting">
         {
-          inProgressList.map((item, i) => {
+          currentList.map((item, i) => {
             return (
               <li key={i} >
               <div className="left">
@@ -114,10 +120,10 @@ class HundredCounty extends Component {
               </div>
               <div className="center">
                 <div className="title">{item.title}</div>
-                <div>发布时间：{item.time}</div>
+                <div>发布时间：{item.date}</div>
               </div>
               <div className="right">
-                <Popover key={item.id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
                     <div> 我要投票</div>
                 </Popover>
               </div>
@@ -130,30 +136,34 @@ class HundredCounty extends Component {
   }
 
   renderPublish = () => {
-    const {publishList} = this.state
+    const { loading } = this.props;
+    const currentList = this.getFilterList(3) // 3已发布（已结束）
     return (
       <ul className="publish">
         {
-          publishList.map((item, index) => {
+          currentList.map((item, index) => {
+            const link = `https://www.clgnews.com/report/detail/${item._id}`
             return (
               <li key={index}>
                 <div className="left">
-                  <div className="title">{item.title}</div>
-               <div className="time">发布时间：{item.time}</div>
+                  <div className="title">
+                    <a href={`${link}`} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                  </div>
+                  <div className="time">发布时间：{item.date}</div>
                 </div>
                 <div className="right">
                   <div>
-                    <a href={`${item.link}/#px10`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${link}/#px10`} target="_blank" rel="noopener noreferrer">
                       <img style={{ width: '100%' }} src={publish10} alt="" />
                     </a>
                   </div>
                   <div>
-                    <a href={`${item.link}/#px100`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${link}/#px100`} target="_blank" rel="noopener noreferrer">
                       <img style={{ width: '100%' }} src={publish100} alt="" />
                     </a>
                   </div>
                   <div>
-                    <a href={`${item.link}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${link}`} target="_blank" rel="noopener noreferrer">
                      <img style={{ width: '100%' }} src={publishReport} alt=""  />
                     </a>
                   </div>
@@ -173,20 +183,19 @@ class HundredCounty extends Component {
   }
 
   renderNoPublish = () => {
-    const {noPublishList} = this.state
+    const currentList = this.getFilterList(0) // 0未发布（待启动）
     return (
       <ul className="no-publish">
         {
-          noPublishList.map((item, index) => {
+          currentList.map((item, index) => {
             return (
               <li key={index}>
-                {/* <div className="left">{getYear(item.time)}<br />{getMonthZh(item.time)}</div> */}
                 <div className="left">
                   <img src={unPublish} alt="" />
                 </div>
                 <div className="right">
                   <div className="title">{item.title}</div>
-                <div className="time">发布时间：{item.time}</div>
+                <div className="time">发布时间：{item.date}</div>
                 </div>
               </li>
             )
@@ -311,39 +320,6 @@ class HundredCounty extends Component {
               title={
                 <span>
                   <span className="icon">
-                    <img src={icon_notices} alt="notices" />
-                  </span>
-                  榜单公告
-                </span>
-              }
-              extra={
-                <Button target="_blank" type="link" href="https://www.clgnews.com/notice_list/1">
-                  更多
-                </Button>
-              }
-            >
-              <List
-                size="small"
-                itemLayout="horizontal"
-                dataSource={gonggao}
-                renderItem={item => (
-                  <List.Item>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
-                      <span>{item.title}</span>
-                    </a>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
-                      <span>{moment(item.beginDate).format('YYYY-MM-DD')}</span>
-                    </a>
-                  </List.Item>
-                )}
-              ></List>
-            </Card>
-            <Card
-            loading={loading}
-              className="list-card"
-              title={
-                <span>
-                  <span className="icon">
                     <img src={icon_news} alt="news" />
                   </span>
                   榜单新闻
@@ -358,7 +334,7 @@ class HundredCounty extends Component {
               <List
                 size="small"
                 itemLayout="horizontal"
-                dataSource={news}
+                dataSource={news.slice(0, 3)}
                 renderItem={item => (
                   <List.Item>
                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
@@ -404,6 +380,41 @@ class HundredCounty extends Component {
                 )}
               ></List>
             </Card>
+            <Card
+              loading={loading}
+              className="list-card"
+              title={
+                <span>
+                  <span className="icon">
+                    <img src={icon_notices} alt="notices" />
+                  </span>
+                  榜单公告
+                </span>
+              }
+              extra={
+                <Button target="_blank" type="link" href="https://www.clgnews.com/notice_list/1">
+                  更多
+                </Button>
+              }
+            >
+              <List
+                size="small"
+                itemLayout="horizontal"
+                dataSource={gonggao}
+                renderItem={item => (
+                  <List.Item>
+                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
+                      <span>{item.title}</span>
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
+                      <span>{moment(item.beginDate).format('YYYY-MM-DD')}</span>
+                    </a>
+                  </List.Item>
+                )}
+              ></List>
+            </Card>
+            
+           
             <Card
               loading={loading}
               className="list-card"
