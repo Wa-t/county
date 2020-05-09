@@ -34,7 +34,7 @@ class PrimaryRouter extends Component {
     return (
       <React.Fragment>
         <Switch>
-          {this.state.routes.map((route, i) => route.show ? <RouteWithSubRoutes key={i} {...route} /> : null)}
+          {this.state.routes.filter(item => item.path).map((route, i) => route.show ? <RouteWithSubRoutes key={i} {...route} /> : null)}
         </Switch>
       </React.Fragment>
     )

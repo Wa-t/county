@@ -75,7 +75,7 @@ export default class About extends Component {
               <span className="label">孙先生：</span>
               <span>18610150311</span>
             </div>
-            <div className="contact-item-more" style={{ color: '#42528a'}} >如你需要更多信息，请前往榜单合作叶敏啊</div>
+            <div className="contact-item-more" style={{ color: '#42528a', cursor: 'pointer'}} >如你需要更多信息，请前往榜单合作[YHM1]页面</div>
             <div className="contact-item-more" style={{ marginTop: 30}} >《小康》杂志社社址：</div>
             <div className="contact-item" >北京市朝阳区百子湾路32号苹果社区北区1号楼四层</div>
             <div className="contact-item" >如需更多信息，请前往介绍页面</div>

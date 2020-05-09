@@ -6,6 +6,7 @@ import Pass from '../pages/pass';
 import Platform from '../pages/pass/platform';
 import About from '../pages/about';
 import Member from '../pages/member';
+import Service from '../pages/serviceCenter';
 import Cooperation from '../pages/cooperation';
 import HundredDetail from '../pages/hundredDetail';
 import Declaration from '../pages/declaration'
@@ -41,24 +42,30 @@ const routes = [
     isShow: false
   },
   {
-    path: '/pass',
+    path: '/service',
+    component: Service,
+    name: '客服中心',
+    isShow: false
+  },
+  {
+    path: '/tong',
     component: PassRouter,
     name: '郡县通',
     showSub: false,
     routes: [
       {
-        path: '/pass',
+        path: '/tong',
         component: Pass,
         name: '郡县通',
         exact: true
       },
       {
-        path: '/pass/platform/:id/:title/:name',
+        path: '/tong/platform/:id/:title/:name',
         component: Platform,
         name: '郡县通文章',
       },
       {
-        path: '/pass/platform/:id/:title',
+        path: '/tong/platform/:id/:title',
         component: Platform,
         name: '郡县通平台',
       }
@@ -84,7 +91,7 @@ const routes = [
   },
 
   {
-    path: '/age3',
+    // path: '/a1',
     component: null,
     name: '县域联播',
     foreignSite: {
@@ -92,7 +99,7 @@ const routes = [
     }
   },
   {
-    path: '/age4',
+    // path: '/a2',
     component: null,
     name: '百县工程',
     foreignSite: {
@@ -100,7 +107,7 @@ const routes = [
     }
   },
   {
-    path: '/age5',
+    // path: '/a3',
     component: null,
     name: '中国小康指数',
     foreignSite: {
@@ -108,12 +115,17 @@ const routes = [
     }
   },
   {
-    path: '/age6',
+    // path: '/a4',
     component: null,
     name: '中国小康网',
     foreignSite: {
       path: 'http://www.chinaxiaokang.com/'
     }
+  },
+  {
+    path: '*',
+    component: HomePage,
+    name: '中国小康网',
   },
 ];
 

@@ -16,7 +16,7 @@ class AppLayout extends Component {
           <SiteHeader />
         </Header>
         <Content>
-          <PrimaryRouter {...this.props}/>
+          <PrimaryRouter {...this.props} />
         </Content>
         <Footer>
           <SiteFooter />
