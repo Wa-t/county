@@ -126,7 +126,7 @@ export const getArticals = (param) => (dispatch) => {
 
   // 符合标签筛选的数据
   const matchTagData = data.filter(ele => {
-    if (tag) {
+    if (tag && tag !== 'all') {
       return ele.tag === tag
     } else {
       return true
