@@ -81,6 +81,7 @@
   "devDependencies": {
     "http-proxy-middleware": "^1.0.3"
   },
+  "proxy": "https://www.clgnews.com/",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",

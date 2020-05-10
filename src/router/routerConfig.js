@@ -10,6 +10,7 @@ import Service from '../pages/serviceCenter';
 import Cooperation from '../pages/cooperation';
 import HundredDetail from '../pages/hundredDetail';
 import Declaration from '../pages/declaration'
+import Detail from '../pages/articalDetail';
 
 
 const routes = [
@@ -89,7 +90,12 @@ const routes = [
     name: '榜单申报',
     isShow: false
   },
-
+  {
+    path: '/detail/:id',
+    component: Detail,
+    name: '文章详情',
+    isShow: false
+  },
   {
     // path: '/a1',
     component: null,
