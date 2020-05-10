@@ -9,7 +9,7 @@ import { getUrlParams } from '../../utils'
 
 const isEmptyObj = (obj) => !Object.keys(obj).length
 
-const { type = "" } = getUrlParams() || {}
+const { type = "", link } = getUrlParams() || {}
 const before = {
   1: 'notice',
   2: 'news',
@@ -32,6 +32,9 @@ export default class Detail extends Component {
         if (res.status === 200) {
           this.setState({
             data: res.data
+          }, () => {
+            const summaryReport = document.querySelector(`#${link}`)
+            if (summaryReport) summaryReport.scrollIntoView()
           })
         }
       })
