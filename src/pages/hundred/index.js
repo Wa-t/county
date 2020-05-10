@@ -186,12 +186,12 @@ class HundredCounty extends Component {
                   </div>
                   <div className="right">
                     <div>
-                      <a href={`${link}/#px10`} target="_blank" rel="noopener noreferrer">
+                      <a href={`${link}&link=px10`} target="_blank" rel="noopener noreferrer">
                         <img style={{ width: '100%' }} src={publish10} alt="" />
                       </a>
                     </div>
                     <div>
-                      <a href={`${link}#px100`} target="_blank" rel="noopener noreferrer">
+                      <a href={`${link}&link=px100`} target="_blank" rel="noopener noreferrer">
                         <img style={{ width: '100%' }} src={publish100} alt="" />
                       </a>
                     </div>
