@@ -241,7 +241,7 @@ class HundredCounty extends Component {
             })(
               <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
                 {
-                  searchList.map(item => <Option value={item._id}>{item.title}</Option>)
+                  searchList.map(item => <Option key={item._id} value={item._id}>{item.title}</Option>)
                 }
               </Select>
             )}
@@ -312,7 +312,7 @@ class HundredCounty extends Component {
                 );
               } else {
                 return (
-                  <Button key={item.id} href={item.address}>
+                  <Button key={item.id} href={item.address} key={i}>
                     {item.name}
                   </Button>
                 );

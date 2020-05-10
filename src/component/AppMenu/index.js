@@ -120,7 +120,7 @@ class AppMenu extends Component {
               //   );
               // } else {
               return (
-                <Menu.Item key={route.path}>
+                <Menu.Item key={i}>
                   {route.foreignSite ? (
                     <a href={route.foreignSite.path} target="_blank" rel="noopener noreferrer">
                       {route.name}
