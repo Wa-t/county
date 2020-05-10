@@ -9,7 +9,6 @@ import { getUrlParams } from '../../utils'
 
 const isEmptyObj = (obj) => !Object.keys(obj).length
 
-const { type = "", link } = getUrlParams() || {}
 const before = {
   1: 'notice',
   2: 'news',
@@ -27,6 +26,7 @@ export default class Detail extends Component {
   }
   componentDidMount() {
     const { id } = this.state;
+    const { type = "", link } = getUrlParams() || {}
     axios.get(`/${before[type]}/detail/${id}?json=1`)
       .then(res => {
         if (res.status === 200) {
@@ -48,7 +48,7 @@ export default class Detail extends Component {
     const { id } = this.state;
 
     const lastData = isEmptyObj(obj) ? detail : obj
-
+    const { type = "" } = getUrlParams() || {}
     const noData = !id || !type || isEmptyObj(lastData)
     return (
       <Row className="channel-container">
