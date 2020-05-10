@@ -37,7 +37,8 @@ class HundredCounty extends Component {
     this.state = {
       visible: false,
       declareVisible: false,
-      searchResultList: []
+      searchResultList: [],
+      tabKey: '1',
     }
   }
 
@@ -71,6 +72,11 @@ class HundredCounty extends Component {
       visible: true
     })
   }
+
+  onChangeKey = (key) => {
+    this.setState({ tabKey: key })
+  }
+
   hideModal = () => {
     this.setState({
       visible: false,
@@ -78,6 +84,12 @@ class HundredCounty extends Component {
     });
   };
 
+  filterOptions = (input, option) => {
+    console.log(input, option);
+
+    return option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+
+  }
   getFilterList = (filterKey) => {
     const { list = [] } = this.props.data;
     return list.filter(item => {
@@ -90,7 +102,7 @@ class HundredCounty extends Component {
 
     return (
       <Card className="tabs-card">
-        <Tabs defaultActiveKey="1" className="" >
+        <Tabs activeKey={this.state.tabKey} onChange={this.onChangeKey} className="" >
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
               {this.renderInProgress()}
@@ -244,7 +256,12 @@ class HundredCounty extends Component {
             {getFieldDecorator('bangId', {
               rules: [{ required: true, message: '请选择榜单' }],
             })(
-              <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
+              <Select
+                placeholder="选择榜单"
+                showSearch
+                onChange={this.handleSelectChange}
+                filterOption={this.filterOptions}
+              >
                 {
                   searchList.map(item => <Option key={item._id} value={item._id}>{item.title}</Option>)
                 }
@@ -311,9 +328,7 @@ class HundredCounty extends Component {
               } else
                 if (parseInt(item.id) === 7) {
                   return (
-                    <Popover key={item.id} placement="bottom" trigger="click" content={<img width="145px" src={voteQRCode} alt="vote" />}>
-                      <Button>{item.name}</Button>
-                    </Popover>
+                    <Button key={item.id} onClick={() => { this.onChangeKey('1') }}>{item.name}</Button>
                   );
                 } else {
                   return (
