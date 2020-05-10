@@ -92,14 +92,6 @@ class HundredCounty extends Component {
     return (
       <Card className="tabs-card">
         <Tabs defaultActiveKey="1" className="" >
-          {/* <Row> */}
-          {/* <Col> */}
-          {/* <TabPane tab="进行中榜单" key="1">
-            <div className="tab-pane-box">
-              {this.renderInProgress()}
-            </div>
-          </TabPane> */}
-          {/* </Col> */}
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
               {this.renderInProgress()}
@@ -122,7 +114,6 @@ class HundredCounty extends Component {
               {this.renderSearchList()}
             </div>
           </TabPane>
-          {/* </Row> */}
         </Tabs>
       </Card>
     )
@@ -168,7 +159,7 @@ class HundredCounty extends Component {
         <Skeleton loading={loading} >
           {
             currentList.map((item, index) => {
-              const link = `https://www.clgnews.com/report/detail/${item._id}`
+              const link = `#/detail/${item._id}?type=3`
               return (
                 <li key={index}>
                   <div className="left">
@@ -184,7 +175,7 @@ class HundredCounty extends Component {
                       </a>
                     </div>
                     <div>
-                      <a href={`${link}/#px100`} target="_blank" rel="noopener noreferrer">
+                      <a href={`${link}#px100`} target="_blank" rel="noopener noreferrer">
                         <img style={{ width: '100%' }} src={publish100} alt="" />
                       </a>
                     </div>
@@ -195,7 +186,7 @@ class HundredCounty extends Component {
                     </div>
                     <div>
 
-                      <a href="https://www.clgnews.com/news_list/bangdannews/1" target="_blank" rel="noopener noreferrer">
+                      <a href="#/newList/2" target="_blank" rel="noopener noreferrer">
                         <img style={{ width: '100%' }} src={publishNews} alt="" />
                       </a>
                     </div>
@@ -232,7 +223,6 @@ class HundredCounty extends Component {
             })
           }
         </Skeleton>
-
       </ul>
     )
   }
@@ -271,7 +261,7 @@ class HundredCounty extends Component {
                   </div>
                   <div className="right">
                     <div className="title">
-                      <a href={`https://www.clgnews.com/report/detail/${item._id}`} target="_blank" rel="noopener noreferrer">
+                      <a href={`#/detail/${item._id}?type=3`} target="_blank" rel="noopener noreferrer">
                         {item.title}
                       </a>
                     </div>
@@ -371,7 +361,7 @@ class HundredCounty extends Component {
                 </span>
               }
               extra={
-                <Button target="_blank" type="link" href="https://www.clgnews.com/news_list/bangdannews/1">
+                <Button target="_blank" type="link" href="#/newList/2">
                   更多
                 </Button>
               }
@@ -382,10 +372,10 @@ class HundredCounty extends Component {
                 dataSource={news.slice(0, 3)}
                 renderItem={item => (
                   <List.Item>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=2`}>
                       <span>{item.title}</span>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=2`}>
                       <span>{moment(item.addDate).format('YYYY-MM-DD')}</span>
                     </a>
                   </List.Item>
@@ -404,7 +394,7 @@ class HundredCounty extends Component {
                 </span>
               }
               extra={
-                <Button target="_blank" type="link" href="https://www.clgnews.com/report_list/1">
+                <Button target="_blank" type="link" href="#/newList/3">
                   更多
                 </Button>
               }
@@ -415,10 +405,10 @@ class HundredCounty extends Component {
                 dataSource={report}
                 renderItem={item => (
                   <List.Item>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/report/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=3`}>
                       <span>{item.title}</span>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/report/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=3`}>
                       <span>{moment(item.beginDate).format('YYYY-MM-DD')}</span>
                     </a>
                   </List.Item>
@@ -437,7 +427,7 @@ class HundredCounty extends Component {
                 </span>
               }
               extra={
-                <Button target="_blank" type="link" href="https://www.clgnews.com/notice_list/1">
+                <Button target="_blank" type="link" href="#/newList/1">
                   更多
                 </Button>
               }
@@ -448,10 +438,10 @@ class HundredCounty extends Component {
                 dataSource={gonggao}
                 renderItem={item => (
                   <List.Item>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=1`}>
                       <span>{item.title}</span>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/notice/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=1`}>
                       <span>{moment(item.beginDate).format('YYYY-MM-DD')}</span>
                     </a>
                   </List.Item>
@@ -472,7 +462,7 @@ class HundredCounty extends Component {
                 </span>
               }
               extra={
-                <Button target="_blank" type="link" href="https://www.clgnews.com/business_list/1">
+                <Button target="_blank" type="link" href="#/newList/4">
                   更多
                 </Button>
               }
@@ -483,10 +473,10 @@ class HundredCounty extends Component {
                 dataSource={guanming}
                 renderItem={item => (
                   <List.Item>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/business/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=4`}>
                       <span>{item.title}</span>
                     </a>
-                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/business/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`#/detail/${item._id}?type=4`}>
                       <span>{moment(item.beginDate).format('YYYY-MM-DD')}</span>
                     </a>
                   </List.Item>

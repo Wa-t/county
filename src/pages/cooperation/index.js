@@ -54,9 +54,9 @@ class Cooperation extends Component {
   ]
   componentDidMount() {
     const urlParams = getUrlParams()
-      const { id } = urlParams
-      const summaryReport = document.querySelector(`#${id}`)
-      if (summaryReport) summaryReport.scrollIntoView() 
+    const { id } = urlParams
+    const summaryReport = document.querySelector(`#${id}`)
+    if (summaryReport) summaryReport.scrollIntoView() 
   }
 
   render() {

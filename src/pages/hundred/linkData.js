@@ -2,22 +2,22 @@ const navMenu = [
   {
     id: 2,
     name: '榜单公告',
-    address: 'https://www.clgnews.com/notice_list/1'
+    address: '#/newList/1'
   },
   {
     id: 3,
     name: '榜单新闻',
-    address: 'https://www.clgnews.com/news_list/bangdannews/1'
+    address: '#/newList/2'
   },
   {
     id: 4,
     name: '榜单报告',
-    address: 'https://www.clgnews.com/report_list/1'
+    address: '#/newList/3'
   },
   {
     id: 5,
     name: '榜单冠名',
-    address: 'https://www.clgnews.com/business_list/1'
+    address: '#/newList/4'
   },
   {
     id: 6,
