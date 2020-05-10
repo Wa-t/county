@@ -12,7 +12,7 @@ export const updateState = (data) => ({
 
 
 export const fetchData = () => (dispatch) => {
-  axios.get('https://api.clgnews.com/bang?json=1')
+  axios.get('https://www.clgnews.com/bang?json=1')
     .then(res => {
       if (res.status === 200) {
         dispatch({
