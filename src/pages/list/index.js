@@ -23,7 +23,6 @@ const pageUrlObj = {
 
 export default class Index extends Component {
   constructor(props) {
-    console.log('==============', props)
     super(props);
     this.state = {
       type: props.match.params.type || 1,
@@ -67,7 +66,7 @@ export default class Index extends Component {
         </Row>
         <div className="link-parent" >
           {this.state.data.length ? this.state.data.map(item => 
-            <Link className="link-box" key={item._id} to={`/detail/:${item._id}?type=${this.state.type}`} >
+            <Link className="link-box" key={item._id} to={`/detail/${item._id}?type=${this.state.type}`} >
               <div className="link-item link-item-title">{item.title}</div>
               <div className="link-item link-item-date">{moment(item.publishDate || item.publish).format('YYYY-MM-DD')}</div>
             </Link>
