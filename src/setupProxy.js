@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 module.exports = function (app) {
     app.use('/bang',
         createProxyMiddleware({
-            target: 'https://www.clgnews.com',
+            target: 'https://api.clgnews.com',
             changeOrigin: true,
         })
     )

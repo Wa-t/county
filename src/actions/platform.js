@@ -149,16 +149,7 @@ export const getArticals = (param) => (dispatch) => {
       matchTextData.map(ele => ele.id)
         .includes(item.id)
     )
-  // if (!tag && !searchText) { resData = data } else if (searchText) {
-  //   resData = data.filter(item => item.title.indexOf(searchText) > -1).filter(ele => {
-  //     if (tag) {
-  //       console.log(ele.title, ele.tagList.map(e => videoTagType.e))
-  //       return ele.tagList.map(e => videoTagType.e).includes[ele.title]
-  //     } else {
-  //       return true
-  //     }
-  //   })
-  // }
+
 
   dispatch({
     type: "GET_ARTICALS",
