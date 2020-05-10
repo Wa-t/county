@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { Row, Col,  Button, Card, List, Form, Select, Breadcrumb, Popover, Modal,Tabs, Icon,Skeleton } from 'antd';
+import { Row, Col, Button, Card, List, Form, Select, Breadcrumb, Popover, Modal, Tabs, Icon, Skeleton } from 'antd';
 import moment from 'moment';
 import WaitModal from '../../component/WaitModal'
 import QuickEntry from '../../component/QuickEntry';
@@ -42,7 +42,7 @@ class HundredCounty extends Component {
   }
 
   componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(actions.updateState({ loading: true }))
     dispatch(actions.fetchData())
   }
@@ -88,24 +88,32 @@ class HundredCounty extends Component {
 
 
   renderTabs = () => {
-    
+
     return (
       <Card className="tabs-card">
-        <Tabs defaultActiveKey="1" >
+        <Tabs defaultActiveKey="1" className="" >
+          {/* <Row> */}
+          {/* <Col> */}
+          {/* <TabPane tab="进行中榜单" key="1">
+            <div className="tab-pane-box">
+              {this.renderInProgress()}
+            </div>
+          </TabPane> */}
+          {/* </Col> */}
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
-              { this.renderInProgress() }
+              {this.renderInProgress()}
             </div>
           </TabPane>
           <TabPane tab="已发布榜单" key="2">
             <div className="tab-pane-box">
-              { this.renderPublish()}
+              {this.renderPublish()}
             </div>
-          
+
           </TabPane>
           <TabPane tab="未发布榜单" key="3">
-          <div className="tab-pane-box">
-              { this.renderNoPublish()}
+            <div className="tab-pane-box">
+              {this.renderNoPublish()}
             </div>
           </TabPane>
 
@@ -114,6 +122,7 @@ class HundredCounty extends Component {
               {this.renderSearchList()}
             </div>
           </TabPane>
+          {/* </Row> */}
         </Tabs>
       </Card>
     )
@@ -129,20 +138,20 @@ class HundredCounty extends Component {
             currentList.map((item, i) => {
               return (
                 <li key={i} >
-                <div className="left">
-                  <Button  className="selecting-tag">榜单公告</Button>
-                  <Button  className="selecting-tag">榜单冠名</Button>
-                </div>
-                <div className="center">
-                  <div className="title">{item.title}</div>
-                  <div>发布时间：{item.date}</div>
-                </div>
-                <div className="right">
-                  <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                  <div className="left">
+                    <Button className="selecting-tag">榜单公告</Button>
+                    <Button className="selecting-tag">榜单冠名</Button>
+                  </div>
+                  <div className="center">
+                    <div className="title">{item.title}</div>
+                    <div>发布时间：{item.date}</div>
+                  </div>
+                  <div className="right">
+                    <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
                       <div> 我要投票</div>
-                  </Popover>
-                </div>
-              </li>
+                    </Popover>
+                  </div>
+                </li>
               )
             })
           }
@@ -157,46 +166,46 @@ class HundredCounty extends Component {
     return (
       <ul className="publish">
         <Skeleton loading={loading} >
-        {
-          currentList.map((item, index) => {
-            const link = `https://www.clgnews.com/report/detail/${item._id}`
-            return (
-              <li key={index}>
-                <div className="left">
-                  <div className="title">
-                    <a href={`${link}`} target="_blank" rel="noopener noreferrer">{item.title}</a>
+          {
+            currentList.map((item, index) => {
+              const link = `https://www.clgnews.com/report/detail/${item._id}`
+              return (
+                <li key={index}>
+                  <div className="left">
+                    <div className="title">
+                      <a href={`${link}`} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                    </div>
+                    <div className="time">发布时间：{item.date}</div>
                   </div>
-                  <div className="time">发布时间：{item.date}</div>
-                </div>
-                <div className="right">
-                  <div>
-                    <a href={`${link}/#px10`} target="_blank" rel="noopener noreferrer">
-                      <img style={{ width: '100%' }} src={publish10} alt="" />
-                    </a>
+                  <div className="right">
+                    <div>
+                      <a href={`${link}/#px10`} target="_blank" rel="noopener noreferrer">
+                        <img style={{ width: '100%' }} src={publish10} alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <a href={`${link}/#px100`} target="_blank" rel="noopener noreferrer">
+                        <img style={{ width: '100%' }} src={publish100} alt="" />
+                      </a>
+                    </div>
+                    <div>
+                      <a href={`${link}`} target="_blank" rel="noopener noreferrer">
+                        <img style={{ width: '100%' }} src={publishReport} alt="" />
+                      </a>
+                    </div>
+                    <div>
+
+                      <a href="https://www.clgnews.com/news_list/bangdannews/1" target="_blank" rel="noopener noreferrer">
+                        <img style={{ width: '100%' }} src={publishNews} alt="" />
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <a href={`${link}/#px100`} target="_blank" rel="noopener noreferrer">
-                      <img style={{ width: '100%' }} src={publish100} alt="" />
-                    </a>
-                  </div>
-                  <div>
-                    <a href={`${link}`} target="_blank" rel="noopener noreferrer">
-                     <img style={{ width: '100%' }} src={publishReport} alt=""  />
-                    </a>
-                  </div>
-                  <div>
-                  
-                    <a href="https://www.clgnews.com/news_list/bangdannews/1" target="_blank" rel="noopener noreferrer">
-                      <img style={{ width: '100%' }} src={publishNews} alt="" />
-                    </a>
-                  </div>
-                </div>
-              </li>
-            )
-          })
-        }
+                </li>
+              )
+            })
+          }
         </Skeleton>
-        
+
       </ul>
     )
   }
@@ -207,23 +216,23 @@ class HundredCounty extends Component {
     return (
       <ul className="no-publish">
         <Skeleton loading={loading} >
-        {
-          currentList.map((item, index) => {
-            return (
-              <li key={index}>
-                <div className="left">
-                  <img src={unPublish} alt="" />
-                </div>
-                <div className="right">
-                  <div className="title">{item.title}</div>
-                <div className="time">发布时间：{item.date}</div>
-                </div>
-              </li>
-            )
-          })
-        }
+          {
+            currentList.map((item, index) => {
+              return (
+                <li key={index}>
+                  <div className="left">
+                    <img src={unPublish} alt="" />
+                  </div>
+                  <div className="right">
+                    <div className="title">{item.title}</div>
+                    <div className="time">发布时间：{item.date}</div>
+                  </div>
+                </li>
+              )
+            })
+          }
         </Skeleton>
-        
+
       </ul>
     )
   }
@@ -253,27 +262,27 @@ class HundredCounty extends Component {
           </Form.Item>
         </Form>
         <ul className="no-publish">
-        {
-          searchResultList.map((item, index) => {
-            return (
-              <li key={index}>
-                <div className="left">
-                  <img src={unPublish} alt="" />
-                </div>
-                <div className="right">
-                  <div className="title">
-                    <a href={`https://www.clgnews.com/report/detail/${item._id}`} target="_blank" rel="noopener noreferrer">
-                      {item.title}
-                    </a>
+          {
+            searchResultList.map((item, index) => {
+              return (
+                <li key={index}>
+                  <div className="left">
+                    <img src={unPublish} alt="" />
                   </div>
-                <div className="time">发布时间：{item.date}</div>
-                </div>
-              </li>
-            )
-          })
-        }
+                  <div className="right">
+                    <div className="title">
+                      <a href={`https://www.clgnews.com/report/detail/${item._id}`} target="_blank" rel="noopener noreferrer">
+                        {item.title}
+                      </a>
+                    </div>
+                    <div className="time">发布时间：{item.date}</div>
+                  </div>
+                </li>
+              )
+            })
+          }
         </ul>
-      
+
       </div>
     );
   }
@@ -303,32 +312,32 @@ class HundredCounty extends Component {
                     {item.name}
                   </Button>
                 );
-              } else 
-              if (parseInt(item.id) === 7) {
-                return (
-                  <Popover key={item.id} placement="bottom" trigger="click" content={<img width="145px" src={voteQRCode} alt="vote" />}>
-                    <Button>{item.name}</Button>
-                  </Popover>
-                );
-              } else {
-                return (
-                  <Button key={item.id} href={item.address}>
-                    {item.name}
-                  </Button>
-                );
-              }
+              } else
+                if (parseInt(item.id) === 7) {
+                  return (
+                    <Popover key={item.id} placement="bottom" trigger="click" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                      <Button>{item.name}</Button>
+                    </Popover>
+                  );
+                } else {
+                  return (
+                    <Button key={item.id} href={item.address}>
+                      {item.name}
+                    </Button>
+                  );
+                }
             })}
           </Button.Group>
         </Col>
         <Row gutter={20}>
           <Col xs={24} xl={10}>
             {this.renderTabs()}
-            <QuickEntry href="#/cooperation?id=summary-report" entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF'}}/>
-            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
-            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
+            <QuickEntry href="#/cooperation?id=summary-report" entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{ color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF' }} />
+            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{ color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA' }} />
+            <QuickEntry onClick={this.handleDeclareAction} entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{ color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF' }} />
           </Col>
           <Col xs={24} xl={14}>
-             <Card
+            <Card
               className="list-card"
               style={{ position: 'relative' }}
             >
@@ -336,18 +345,18 @@ class HundredCounty extends Component {
               <h4 style={{ color: '#1b63da' }}>
                 <a href="#/appDetail" target="_blank" >展现中国全面小康辉煌成就·创建县域发展综合测评体系</a>
               </h4>
-              
+
               <p>百县榜是由《小康》杂志联合多个国家权威部门和专业机构，面向中国县域基层行政单位，
-隆重推出的百县榜单工程：中国县域发展榜。“中国县域发展榜”聚焦县域发展，针对全
-国每个县域的多项政务领域，深度观察社会民生发展的“毛细血管”，展现中国全面小康
+              隆重推出的百县榜单工程：中国县域发展榜。“中国县域发展榜”聚焦县域发展，针对全
+              国每个县域的多项政务领域，深度观察社会民生发展的“毛细血管”，展现中国全面小康
 的辉煌成就，创建中国2856个县域发展的综合测评体系...</p>
-                <Button 
-                  style={{ position: 'absolute', bottom: 10, right: 24 }} 
-                  type="link" 
-                  href="#/appDetail"
-                  target="_blank"
-                >
-                  更多
+              <Button
+                style={{ position: 'absolute', bottom: 10, right: 24 }}
+                type="link"
+                href="#/appDetail"
+                target="_blank"
+              >
+                更多
                 </Button>
             </Card>
             <Card
@@ -373,7 +382,7 @@ class HundredCounty extends Component {
                 dataSource={news.slice(0, 3)}
                 renderItem={item => (
                   <List.Item>
-                   <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
+                    <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
                       <span>{item.title}</span>
                     </a>
                     <a target="_blank" rel="noopener noreferrer" href={`https://www.clgnews.com/news/detail/${item._id}`}>
@@ -449,8 +458,8 @@ class HundredCounty extends Component {
                 )}
               ></List>
             </Card>
-            
-           
+
+
             <Card
               loading={loading}
               className="list-card"

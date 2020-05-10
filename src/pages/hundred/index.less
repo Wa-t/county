@@ -10,7 +10,8 @@
     .ant-breadcrumb {
       padding-top: 15px;
     }
-    .ant-breadcrumb > span:last-child a {
+
+    .ant-breadcrumb>span:last-child a {
       color: @ColorD;
     }
 
@@ -144,23 +145,42 @@
     height: 608px;
     margin-bottom: 14px;
     padding-top: 10px;
+
     .tab-pane-box {
       overflow: hidden;
     }
+
     .ant-card-body {
-      padding:0;
+      padding: 0;
+
       .ant-tabs-nav-scroll {
         text-align: center;
         margin-bottom: 10px;
+        padding: 0 10px;
+
+        .ant-tabs-nav {
+          width: 100%;
+
+          & div:first-child {
+            // background-color: rebeccapurple;
+            display: flex;
+            justify-content: space-between;
+
+            .ant-tabs-tab {
+              min-width: 20%;
+            }
+          }
+        }
       }
     }
 
 
-    .ant-tabs-tab-prev.ant-tabs-tab-arrow-show, .ant-tabs-tab-next.ant-tabs-tab-arrow-show {
+    .ant-tabs-tab-prev.ant-tabs-tab-arrow-show,
+    .ant-tabs-tab-next.ant-tabs-tab-arrow-show {
       display: none;
     }
 
-    .ant-tabs-nav .ant-tabs-tab  {
+    .ant-tabs-nav .ant-tabs-tab {
       // display: flex;
       // flex: 1;
       // flex-direction: column;
@@ -170,6 +190,7 @@
       background-color: #ebeef9;
       border-radius: 6px;
       color: #333333;
+
       &:last-child {
         background: red;
         color: #fff;
@@ -186,15 +207,17 @@
       background-color: #1b63da;
     }
 
-    .ant-tabs-top .ant-tabs-ink-bar-animated, .ant-tabs-bottom .ant-tabs-ink-bar-animated {
-      display: none!important;
+    .ant-tabs-top .ant-tabs-ink-bar-animated,
+    .ant-tabs-bottom .ant-tabs-ink-bar-animated {
+      display: none !important;
     }
 
-    .selecting{
+    .selecting {
       overflow: auto;
       height: 540px;
       padding: 10px;
       text-align: center;
+
       li {
         display: flex;
         justify-content: space-between;
@@ -205,13 +228,15 @@
         line-height: 1.4;
         color: #333;
         background: #f4fbff;
-        .left{
+
+        .left {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-        
+
           height: 65%;
           margin: 0 8px;
+
           .selecting-tag {
             background: #ccecfc;
             border-radius: 8px;
@@ -219,6 +244,7 @@
             padding: 4px;
           }
         }
+
         .center {
           height: 80%;
           display: flex;
@@ -227,7 +253,8 @@
           width: calc(100% - 64px - 80px);
           text-align: left;
           padding-left: 4px;
-          .title{
+
+          .title {
             font-size: 18px;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -236,7 +263,8 @@
             position: relative;
           }
         }
-        .right{
+
+        .right {
           width: 64px;
           height: 64px;
           border-radius: 50%;
@@ -246,11 +274,13 @@
         }
       }
     }
-    .publish{
+
+    .publish {
       overflow: auto;
       height: 540px;
       padding: 10px;
       text-align: center;
+
       li {
         display: flex;
         justify-content: space-between;
@@ -260,39 +290,47 @@
         background-color: #f4fbff;
         margin-bottom: 10px;
         border-radius: 4px;
+
         .left {
           font-size: 14px;
           text-align: left;
           width: calc(100% - 184px);
         }
+
         .title {
           color: #00407c;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+
         .time {
           font-size: 12px;
           color: @ColorN;
         }
-        .right{
+
+        .right {
           display: flex;
-          div{
+
+          div {
             width: 42px;
             height: 42px;
             margin: 0 2px;
           }
         }
       }
-      li:last-child{
+
+      li:last-child {
         border: 0;
       }
     }
-    .no-publish{
+
+    .no-publish {
       overflow: auto;
       height: 540px;
       padding: 10px;
       text-align: center;
+
       li {
         display: flex;
         justify-content: center;
@@ -304,17 +342,21 @@
         background-color: #f4fbff;
         margin-bottom: 10px;
         border-radius: 4px;
+
         .left {
           width: 42px;
           height: 42px;
           margin-right: 20px;
+
           img {
             width: 100%;
           }
         }
-        .right{
+
+        .right {
           width: 200px;
           text-align: left;
+
           .title {
             color: #00407c;
             overflow: hidden;
@@ -322,11 +364,13 @@
             white-space: nowrap;
           }
         }
+
         .time {
           font-size: 12px;
         }
       }
-      li:last-child{
+
+      li:last-child {
         border: 0;
       }
     }

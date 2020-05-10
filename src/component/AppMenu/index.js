@@ -120,13 +120,13 @@ class AppMenu extends Component {
               //   );
               // } else {
               return (
-                <Menu.Item key={route.path}>
+                <Menu.Item key={i}>
                   {route.foreignSite ? (
                     <a href={route.foreignSite.path} target="_blank" rel="noopener noreferrer">
                       {route.name}
                     </a>
                   ) : (
-                      <NavLink to={{ pathname: route.path, state: { refresh: true } }}>
+                      <NavLink key={i} to={{ pathname: route.path, state: { refresh: true } }}>
                         {route.icon && <Icon type={route.icon} />} <span>{route.name}</span>
                       </NavLink>
                     )}

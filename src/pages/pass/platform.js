@@ -73,6 +73,7 @@ class Platform extends Component {
   render() {
     const { articals } = this.props;
     const { name } = this.props.match.params;
+    console.log('gggggg', articals)
     return (
       <Row className="pass-platform-container">
         <Col span={24}>
@@ -95,9 +96,9 @@ class Platform extends Component {
                 >
                   <div className="list-item">
 
-                    {item.extendInfo ?
+                    {item.img ?
                       <div className="img">
-                        <img alt="" width="200" src={item.extendInfo && item.extendInfo.split(',')[0]}></img>
+                        <img alt="" width="300" src={item.img}></img>
                       </div>
                       : null
                     }
@@ -114,11 +115,13 @@ class Platform extends Component {
                         <span className="tag">{item.tag} </span>
                       </div>
 
-                      <div style={{ marginTop: 20 }}>
+                      <div style={{ marginTop: 23 }}>
                         <Button
                           style={{
                             backgroundColor: '#3652cb',
-                            color: '#FFF'
+                            color: '#FFF',
+                            width: 110,
+                            height: 35
                           }}
                           onClick={() => this.viewDetail(item)}
                           shape="round">
