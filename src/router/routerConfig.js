@@ -11,6 +11,7 @@ import Cooperation from '../pages/cooperation';
 import HundredDetail from '../pages/hundredDetail';
 import Declaration from '../pages/declaration'
 import Detail from '../pages/articalDetail';
+import NewList from '../pages/list';
 
 
 const routes = [
@@ -45,6 +46,12 @@ const routes = [
   {
     path: '/service',
     component: Service,
+    name: '客服中心',
+    isShow: false
+  },
+  {
+    path: '/newList/:type',
+    component: NewList,
     name: '客服中心',
     isShow: false
   },
