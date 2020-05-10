@@ -156,5 +156,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "proxy": "https://www.clgnews.com/"
 }
