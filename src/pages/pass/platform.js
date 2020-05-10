@@ -24,7 +24,6 @@ class Platform extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props, '333333333')
     const data = getUrlParams();
     if (data && data.value) {
       this.setState({
@@ -46,7 +45,6 @@ class Platform extends Component {
   queryData = () => {
     const { dispatch } = this.props;
     const { selectedItem: { title: tag }, searchText } = this.state;
-    console.log(searchText)
     dispatch(getArticals({
       tag,
       searchText,
@@ -73,7 +71,6 @@ class Platform extends Component {
   render() {
     const { articals } = this.props;
     const { name } = this.props.match.params;
-    console.log('gggggg', articals)
     return (
       <Row className="pass-platform-container">
         <Col span={24}>

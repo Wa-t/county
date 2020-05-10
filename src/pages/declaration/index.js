@@ -10,14 +10,13 @@ import './index.less';
 export default class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {};
   }
   componentDidMount() {
     window.onresize = () => {
       if (!checkFull()) {
         alert('11');
       }
-      console.log('resize');
     };
   }
 
@@ -25,13 +24,13 @@ export default class Index extends Component {
     return (
       <div>
         <Row className="channel-container">
-        <Col span={24}>
-          <Banner backgroundImage={banner} title="榜单申报" desc="" />
-        </Col>
+          <Col span={24}>
+            <Banner backgroundImage={banner} title="榜单申报" desc="" />
+          </Col>
         </Row>
-          <div>
-            <Wait text="正在开发中..." />
-          </div>
+        <div>
+          <Wait text="正在开发中..." />
+        </div>
       </div>
     );
   }

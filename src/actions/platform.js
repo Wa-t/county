@@ -143,7 +143,6 @@ export const getArticals = (param) => (dispatch) => {
 
   const matchTextData = data.filter(item => searchText ? item.title.indexOf(searchText) > -1 : true)
 
-  console.log(tag, searchText, matchTagData, matchTextData)
 
   resData = matchTagData
     .filter(item =>

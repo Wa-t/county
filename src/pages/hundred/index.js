@@ -57,7 +57,6 @@ class HundredCounty extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
       }
       const { bangId } = values
       const searchResultList = searchList.filter(item => item._id === bangId)

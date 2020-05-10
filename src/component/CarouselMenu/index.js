@@ -27,7 +27,6 @@ export default class CarouselMenu extends Component {
     });
   }
   handleChange(current) {
-    console.log(current)
     this.setState({
       currentIdx: current,
     });

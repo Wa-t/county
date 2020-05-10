@@ -81,7 +81,6 @@ class Channel extends Component {
     this.setState({ playItemId: itemId });
     // 删除前一个激活 item
     if (document.querySelector(".list-item-active")) {
-      console.log("ant-avatar-image");
       let prevVideo = document.querySelector(".list-item-active");
       prevVideo.classList.remove("list-item-active");
       prevVideo.childNodes[1].childNodes[0].pause();
@@ -146,7 +145,6 @@ class Channel extends Component {
 
 
   onSelecte = (item) => {
-    console.log(item);
     this.setState({
       selectedItem: item
     }, this.queryData)
