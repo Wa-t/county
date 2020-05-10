@@ -2,22 +2,22 @@ export const footerMenu = [
   {
     id: 1,
     name: '关于我们',
-    address: '/#/about'
+    address: '/about'
   },
   {
     id: 2,
     name: '客服中心',
-    address: '/#/service'
+    address: '/service'
   },
   {
     id: 3,
     name: '会员中心',
-    address: '/#/member'
+    address: '/member'
   },
   {
     id: 4,
     name: '榜单合作',
-    address: '/#/cooperation'
+    address: '/cooperation'
   }
 ];
 
