@@ -18,7 +18,7 @@ const passMenus = [
   {
     id: 2,
     title: '郡县云桥',
-    desc: '县域自助采编系统',
+    desc: '县域自主采编系统',
     icon: icon_cloud_bridge,
     path: '/tong/platform/7'
   },

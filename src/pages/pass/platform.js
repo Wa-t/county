@@ -71,13 +71,16 @@ class Platform extends Component {
   render() {
     const { articals } = this.props;
     const { name } = this.props.match.params;
+    const newMenus = passMenus.slice(0, 1).concat(passMenus.slice(1).reverse())
+
+
     return (
       <Row className="pass-platform-container">
         <Col span={24}>
           <Banner backgroundImage={banner_04} title="郡县通" desc="县域民生产品中心" />
         </Col>
         <Col span={24} className="pass-content-cotainer">
-          <CarouselMenu onSelecte={this.onSelecte} menus={passMenus} perPageCount={8} defaultSelecte={this.state.selectedItem.id} />
+          <CarouselMenu onSelecte={this.onSelecte} menus={newMenus} perPageCount={8} defaultSelecte={this.state.selectedItem.id} />
           <Search placeholder="关键词搜索" onChange={this.onInput} onSearch={this.onSearch} value={this.state.searchText} enterButton size="large" />
 
           {!name ?

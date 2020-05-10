@@ -28,7 +28,7 @@ export const getArticals = (param) => (dispatch) => {
       "id": 2,
       "title": "政讯报：政务管理者的前沿情报站",
       "type": "新闻资讯快报 政务管理参考",
-      "extendInfo": "https://cdn.clgnews.com/pc_1_1.png",
+      "extendInfo": "",
       img: require('../assets/images/sideimg2.png'),
       "status": null,
       "isDeleted": 0,
