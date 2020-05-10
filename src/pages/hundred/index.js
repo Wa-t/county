@@ -92,14 +92,6 @@ class HundredCounty extends Component {
     return (
       <Card className="tabs-card">
         <Tabs defaultActiveKey="1" className="" >
-          {/* <Row> */}
-          {/* <Col> */}
-          {/* <TabPane tab="进行中榜单" key="1">
-            <div className="tab-pane-box">
-              {this.renderInProgress()}
-            </div>
-          </TabPane> */}
-          {/* </Col> */}
           <TabPane tab="进行中榜单" key="1">
             <div className="tab-pane-box">
               {this.renderInProgress()}
@@ -147,8 +139,13 @@ class HundredCounty extends Component {
                     <div>发布时间：{item.date}</div>
                   </div>
                   <div className="right">
-                    <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px" src={voteQRCode} alt="vote" />}>
-                      <div> 我要投票</div>
+                    <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px"
+                      // src={`https://www.clgnews.com/qrcode?url=https%3A%2F%2Fapp.clgnews.com%2F%2Fapp%2Findex.php%3Fi%3D5%26c%3Dentry%26do%3Dindex%26m%3Dyyb_vote%26id%3D46`}
+                      src={`https://www.clgnews.com/qrcode?url=${item.link}`}
+                      alt="vote"
+                    />}>
+                      <div> 我要投票
+                      </div>
                     </Popover>
                   </div>
                 </li>
