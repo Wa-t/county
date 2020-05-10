@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, List, Input, Spin } from "antd";
+import { Row, Col, List, Input } from "antd";
 import moment from "moment";
 import Banner from "../../component/Banner";
 import CarouselMenu from "../../component/CarouselMenu";
@@ -93,52 +93,50 @@ class Channel extends Component {
     setTimeout(() => videoDom.play(), 200);
   }
   renderVideoList() {
-    const { videos, loading } = this.props;
+    const { videos } = this.props;
     return (
-      <Spin spinning={loading}>
-        <List
-          itemLayout="vertical"
-          size="small"
-          locale={{ emptyText: '暂无数据' }}
-          dataSource={videos}
-          style={{ minHeight: 300 }}
-          renderItem={(item) => (
-            <List.Item
-              key={item.id}
-              onClick={(ev) => this.handleItemClick(ev, item.id)}
-              extra={
-                <video
-                  className="video-component"
-                  controls
-                  controlsList="noremote footbar nodownload noremoteplayback"
-                  disablePictureInPicture={true}
-                  // onClick={() => console.log('a')}
-                  onMouseEnter={(ev) => this.handleMouseEnter(ev)}
-                  onMouseLeave={(ev) => this.handleMouseLeave(ev)}
-                  muted
-                  hoverplay="true"
-                >
-                  <source src={item.src} type="video/mp4" />
-                </video>
-              }
-            >
-              <List.Item.Meta title={item.title} description={item.desc} />
-              <span className="release-time">
-                发布时间：{moment(item.time).format("YYYY-MM-DD")}
-              </span>
-              <div className="tag-list">
-                {item.tagList.length
-                  ? item.tagList.map((tag, i) => (
-                    <span key={i} className="tag-name">
-                      {videoTagType[tag]}
-                    </span>
-                  ))
-                  : null}
-              </div>
-            </List.Item>
-          )}
-        />
-      </Spin>
+      <List
+        itemLayout="vertical"
+        size="small"
+        locale={{ emptyText: '暂无数据' }}
+        dataSource={videos}
+        style={{ minHeight: 300 }}
+        renderItem={(item) => (
+          <List.Item
+            key={item.id}
+            onClick={(ev) => this.handleItemClick(ev, item.id)}
+            extra={
+              <video
+                className="video-component"
+                controls
+                controlsList="noremote footbar nodownload noremoteplayback"
+                disablePictureInPicture={true}
+                // onClick={() => console.log('a')}
+                onMouseEnter={(ev) => this.handleMouseEnter(ev)}
+                onMouseLeave={(ev) => this.handleMouseLeave(ev)}
+                muted
+                hoverplay="true"
+              >
+                <source src={item.src} type="video/mp4" />
+              </video>
+            }
+          >
+            <List.Item.Meta title={item.title} description={item.desc} />
+            <span className="release-time">
+              发布时间：{moment(item.time).format("YYYY-MM-DD")}
+            </span>
+            <div className="tag-list">
+              {item.tagList.length
+                ? item.tagList.map((tag, i) => (
+                  <span key={i} className="tag-name">
+                    {videoTagType[tag]}
+                  </span>
+                ))
+                : null}
+            </div>
+          </List.Item>
+        )}
+      />
     );
   }
 
