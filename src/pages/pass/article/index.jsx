@@ -26,7 +26,7 @@ const articles = [{
   "id": 2,
   "title": "政讯报：政务管理者的前沿情报站",
   "type": "新闻资讯快报 政务管理参考",
-  "extendInfo": "https://cdn.clgnews.com/pc_1_1.png",
+  "extendInfo": "",
   "status": null,
   "isDeleted": 0,
   "content": `
@@ -205,7 +205,7 @@ const Article = ({ title }) => {
         <div className="images">
           {nowArticle.extendInfo.split(',').map((img, key) => (
             <div className="img" key={key}>
-              <div className="fujian">附件 {key + 1}</div>
+              {/* <div className="fujian">附件 {key + 1}</div> */}
               <img className="img" alt="" src={img} />
             </div>
           ))}

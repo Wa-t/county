@@ -28,7 +28,7 @@ export const getArticals = (param) => (dispatch) => {
       "id": 2,
       "title": "政讯报：政务管理者的前沿情报站",
       "type": "新闻资讯快报 政务管理参考",
-      "extendInfo": "https://cdn.clgnews.com/pc_1_1.png",
+      "extendInfo": "",
       img: require('../assets/images/sideimg2.png'),
       "status": null,
       "isDeleted": 0,
@@ -143,23 +143,13 @@ export const getArticals = (param) => (dispatch) => {
 
   const matchTextData = data.filter(item => searchText ? item.title.indexOf(searchText) > -1 : true)
 
-  console.log(tag, searchText, matchTagData, matchTextData)
 
   resData = matchTagData
     .filter(item =>
       matchTextData.map(ele => ele.id)
         .includes(item.id)
     )
-  // if (!tag && !searchText) { resData = data } else if (searchText) {
-  //   resData = data.filter(item => item.title.indexOf(searchText) > -1).filter(ele => {
-  //     if (tag) {
-  //       console.log(ele.title, ele.tagList.map(e => videoTagType.e))
-  //       return ele.tagList.map(e => videoTagType.e).includes[ele.title]
-  //     } else {
-  //       return true
-  //     }
-  //   })
-  // }
+
 
   dispatch({
     type: "GET_ARTICALS",

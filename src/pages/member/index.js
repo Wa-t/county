@@ -10,14 +10,13 @@ import './index.less';
 export default class Member extends Component {
   constructor(props) {
     super(props);
-    this.state = { };
+    this.state = {};
   }
   componentDidMount() {
     window.onresize = () => {
       if (!checkFull()) {
         alert('11');
       }
-      console.log('resize');
     };
   }
 
@@ -30,9 +29,9 @@ export default class Member extends Component {
             <Banner backgroundImage={banner_04} title="会员中心" desc="" />
           </Col>
         </Row>
-          <div>
-            <Wait text="正在开发中..." />
-          </div>
+        <div>
+          <Wait text="正在开发中..." />
+        </div>
       </div>
     );
   }

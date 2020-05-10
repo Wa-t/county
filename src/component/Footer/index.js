@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
+import { Link } from 'react-router-dom';
 import LinkGroup from '../LinkGroup';
 import { footerMenu, friendlyLink, mediaPartners } from './linkData';
 import Copyright from '../Copyright';
@@ -13,8 +14,8 @@ export default class Footer extends Component {
           {/* <Link to='http://baidu.com'>关于我们</Link> */}
           <Button.Group>
             {footerMenu.map(menu => (
-              <Button type="primary" key={menu.id} href={menu.address} ghost>
-                {menu.name}
+              <Button type="primary" key={menu.id} ghost>
+                <Link to={menu.address}>{menu.name}</Link>
               </Button>
             ))}
           </Button.Group>
