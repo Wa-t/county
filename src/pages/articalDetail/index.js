@@ -5,7 +5,7 @@ import banner_04 from '../../assets/images/banner_04.png';
 import axios from "axios";
 import './index.less';
 import moment from 'moment'
-import { getUrlParams } from '../../utils'
+import { getUrlParams, getCompleteApi } from '../../utils'
 
 const isEmptyObj = (obj) => !Object.keys(obj).length
 
@@ -27,7 +27,7 @@ export default class Detail extends Component {
   componentDidMount() {
     const { id } = this.state;
     const { type = "", link } = getUrlParams() || {}
-    axios.get(`/${before[type]}/detail/${id}?json=1`)
+    axios.get(getCompleteApi(`/${before[type]}/detail/${id}?json=1`))
       .then(res => {
         if (res.status === 200) {
           this.setState({

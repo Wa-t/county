@@ -69,3 +69,8 @@ export const getYear = (date) => {
   const year = moment(date).format('Y');
   return year
 }
+
+
+export const getCompleteApi = (path) => {
+  return `https://api.clgnews.com${path}`
+}

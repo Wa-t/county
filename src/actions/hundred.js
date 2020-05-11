@@ -1,5 +1,5 @@
 import axios from "axios";
-import Jsonp from 'jsonp';
+import { getCompleteApi } from '../utils'
 
 
 
@@ -12,7 +12,7 @@ export const updateState = (data) => ({
 
 
 export const fetchData = () => (dispatch) => {
-  axios.get('/bang?json=1')
+  axios.get(getCompleteApi('/bang?json=1'))
     .then(res => {
       if (res.status === 200) {
         dispatch({

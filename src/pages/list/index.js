@@ -5,6 +5,7 @@ import moment from 'moment';
 import axios from "axios";
 import Banner from '../../component/Banner';
 import banner_04 from '../../assets/images/banner_04.png';
+import { getCompleteApi } from '../../utils'
 import './index.less';
 
 const pageTypeObj = {
@@ -30,7 +31,7 @@ export default class Index extends Component {
     };
   }
   componentDidMount() {
-    axios.get(pageUrlObj[this.props.match.params.type])
+    axios.get(getCompleteApi(pageUrlObj[this.props.match.params.type]))
     .then(res => {
       if (res.status === 200) {
         this.setState({ data: res.data && res.data.newsList ? res.data.newsList : [] });
