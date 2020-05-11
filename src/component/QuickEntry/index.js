@@ -18,6 +18,7 @@ export default class QuickEntry extends Component {
           onClick={onClick}
           type='primary' 
           style={{color: styleConfig.btnColor, background: styleConfig.btnBackground}}
+          target="_blank"
         >
            {entryName}
         </Button>
