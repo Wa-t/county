@@ -4,7 +4,7 @@ import './index.less';
 
 export default class QuickEntry extends Component {
   render() {
-    const { entryDesc, entryName, background, styleConfig, href="#", onClick } = this.props;
+    const { entryDesc, entryName, background, styleConfig, href = "#", onClick } = this.props;
     const cardStyle = {
       background: `url(${background}) center no-repeat`,
       backgroundSize: 'cover',
@@ -12,14 +12,15 @@ export default class QuickEntry extends Component {
     }
     return (
       <Card className='quick-entry-container' style={cardStyle}>
-        <p style={{color: styleConfig.color}}>{entryDesc}</p>
+        <p style={{ color: styleConfig.color }}>{entryDesc}</p>
         <Button
           href={onClick ? null : href}
           onClick={onClick}
-          type='primary' 
-          style={{color: styleConfig.btnColor, background: styleConfig.btnBackground}}
+          type='primary'
+          target="_blank"
+          style={{ color: styleConfig.btnColor, background: styleConfig.btnBackground }}
         >
-           {entryName}
+          {entryName}
         </Button>
       </Card>
     )

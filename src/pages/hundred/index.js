@@ -35,10 +35,10 @@ class HundredCounty extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
       declareVisible: false,
       searchResultList: [],
       tabKey: '1',
+      modalText: '正在开发中...'
     }
   }
 
@@ -48,9 +48,10 @@ class HundredCounty extends Component {
     dispatch(actions.fetchData())
   }
 
-  handleDeclareAction = () => {
+  handleDeclareAction = (text) => {
     this.setState({
-      declareVisible: true
+      declareVisible: true,
+      modalText: typeof text === 'string' ? text : undefined
     })
   }
   handleSearchClick = (e) => {
@@ -65,12 +66,18 @@ class HundredCounty extends Component {
         searchResultList
       })
     });
-    // this.showModal();
   }
-  showModal() {
-    this.setState({
-      visible: true
-    })
+
+
+  onToGuanming = (data) => {
+    console.log('ffffffff')
+  }
+
+  onToReport = (data) => {
+    const { report } = data;
+    if (!report) {
+      this.handleDeclareAction('敬请期待！')
+    }
   }
 
   onChangeKey = (key) => {
@@ -79,8 +86,7 @@ class HundredCounty extends Component {
 
   hideModal = () => {
     this.setState({
-      visible: false,
-      declareVisible: false
+      declareVisible: false,
     });
   };
 
@@ -141,17 +147,17 @@ class HundredCounty extends Component {
               return (
                 <li key={i} >
                   <div className="left">
-                    <Button className="selecting-tag">榜单公告</Button>
-                    <Button className="selecting-tag">榜单冠名</Button>
+                    <Button className="selecting-tag" onClick={(item) => this.onToReport(item)}>榜单公告</Button>
+                    <Button className="selecting-tag" onClick={(item) => this.onToGuanming(item)}>榜单冠名</Button>
                   </div>
                   <div className="center">
                     <div className="title">{item.title}</div>
-                    <div>发布时间：{item.date}</div>
+                    <div>发布时间：{item.publishDate}</div>
                   </div>
                   <div className="right">
                     <Popover key={item._id} placement="right" trigger="hover" content={<img width="145px"
                       // src={`https://www.clgnews.com/qrcode?url=https%3A%2F%2Fapp.clgnews.com%2F%2Fapp%2Findex.php%3Fi%3D5%26c%3Dentry%26do%3Dindex%26m%3Dyyb_vote%26id%3D46`}
-                      src={`https://www.clgnews.com/qrcode?url=${item.link}`}
+                      src={`https://api.clgnews.com/qrcode?url=${item.link}`}
                       alt="vote"
                     />}>
                       <div> 我要投票
@@ -182,7 +188,7 @@ class HundredCounty extends Component {
                     <div className="title">
                       <a href={`${link}`} target="_blank" rel="noopener noreferrer">{item.title}</a>
                     </div>
-                    <div className="time">发布时间：{item.date}</div>
+                    <div className="time">发布时间：{item.publishDate}</div>
                   </div>
                   <div className="right">
                     <div>
@@ -232,7 +238,7 @@ class HundredCounty extends Component {
                   </div>
                   <div className="right">
                     <div className="title">{item.title}</div>
-                    <div className="time">发布时间：{item.date}</div>
+                    <div className="time">发布时间：{item.publishDate}</div>
                   </div>
                 </li>
               )
@@ -250,7 +256,7 @@ class HundredCounty extends Component {
     return (
       <div>
         <Form labelCol={{ span: 6 }} wrapperCol={{ span: 16 }} onSubmit={this.handleSubmit}>
-          <Form.Item label="榜单">
+          <Form.Item label="已发布榜单">
             {getFieldDecorator('bangId', {
               rules: [{ required: true, message: '请选择榜单' }],
             })(
@@ -286,7 +292,7 @@ class HundredCounty extends Component {
                         {item.title}
                       </a>
                     </div>
-                    <div className="time">发布时间：{item.date}</div>
+                    <div className="time">发布时间：{item.publishDate}</div>
                   </div>
                 </li>
               )
@@ -298,7 +304,7 @@ class HundredCounty extends Component {
     );
   }
   render() {
-    const { visible, declareVisible } = this.state;
+    const { visible, declareVisible, modalText } = this.state;
     const { data, loading } = this.props;
     const { gonggao = [], news = [], guanming = [], report = [] } = data;
     return (
@@ -504,19 +510,7 @@ class HundredCounty extends Component {
             </Card>
           </Col>
         </Row>
-        <Modal
-          title="提示"
-          okText="确定"
-          visible={visible}
-          onOk={this.hideModal}
-          onCancel={this.hideModal}
-          footer={[
-            <Button key="submit" type="primary" onClick={this.hideModal}>确定</Button>
-          ]}
-        >
-          <p>很遗憾没有入选！</p>
-        </Modal>
-        <WaitModal visible={declareVisible} onOk={this.hideModal} onCancel={this.hideModal} />
+        <WaitModal visible={declareVisible} text={modalText} onOk={this.hideModal} onCancel={this.hideModal} />
       </Row>
     );
   }

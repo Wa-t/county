@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 import Wait from '../Wait/index';
 
-export default function Index({ visible, onOk, onCancel }) {
+export default function Index({ visible, onOk, onCancel, text = '正在开发中...' }) {
   return (
     <Modal
       title="提示"
@@ -16,7 +16,7 @@ export default function Index({ visible, onOk, onCancel }) {
         <Button key="submit" type="primary" onClick={onCancel}>确定</Button>
       ]}
     >
-      <Wait text="正在开发中..." style={{ border: 'none', margin: 'auto', minWidth: '50%', minHeight: 200, width: '80%' }} />
+      <Wait text={text} style={{ border: 'none', margin: 'auto', minWidth: '50%', minHeight: 200, width: '80%' }} />
     </Modal>
   );
 }
