@@ -34,7 +34,7 @@ export default class Detail extends Component {
             data: res.data
           }, () => {
             const summaryReport = document.querySelector(`#${link}`)
-            if (summaryReport) summaryReport.scrollIntoView()
+            if (summaryReport) summaryReport.scrollIntoView({ behavior: "smooth" })
           })
         }
       })
@@ -50,6 +50,8 @@ export default class Detail extends Component {
     const lastData = isEmptyObj(obj) ? detail : obj
     const { type = "" } = getUrlParams() || {}
     const noData = !id || !type || isEmptyObj(lastData)
+
+    // console.log(lastData)
     return (
       <Row className="channel-container">
         <Row>
@@ -69,12 +71,16 @@ export default class Detail extends Component {
               </>) : <Empty style={{ minHeight: 300 }} description="暂无数据" />
             }
             {lastData.px10 ? (
-              <div id="px10" style={{ textAlign: 'center' }}>
-                <img style={{ width: '70%' }} className="img" src={lastData.px10} alt="" />
-              </div>) : null}
+              <div id="px10" style={{ textAlign: 'center', height: 800 }}>
+                <img
+                  // id="px10"
+                  style={{ width: '100%' }}
+                  className="img" src={lastData.px10.split('?')[0]} alt="" />
+              </div>
+            ) : null}
             {lastData.px100 ? (
-              <div id="px100" className="img" style={{ textAlign: 'center' }} >
-                <img style={{ width: '70%' }} src={lastData.px100} alt="" />
+              <div id="px100" className="img" style={{ textAlign: 'center', height: 1500 }} >
+                <img style={{ width: '100%' }} src={lastData.px100.split('?')[0]} alt="" />
               </div>) : null}
           </div>
         </Row>
