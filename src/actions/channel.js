@@ -45,6 +45,15 @@ export const getVideos = (param) => (dispatch) => {
       time: 1583047607600,
       tagList: ["TRAVELLING"],
     },
+    {
+      id: 5,
+      src: 'https://cdn.clgnews.com/video/site.mp4',
+      title: '中国县域发展榜介绍',
+      desc: '曹永利的创业故事',
+      time: 1583047607600,
+      // poster: vd0,
+      tagList: ['COLUMN']
+    },
   ];
 
   const { tag, searchText } = param

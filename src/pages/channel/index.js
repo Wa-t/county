@@ -103,10 +103,11 @@ class Channel extends Component {
         style={{ minHeight: 300 }}
         renderItem={(item) => (
           <List.Item
-            key={item.id}
+            key={`${Date.now()}${item.title}`}
             onClick={(ev) => this.handleItemClick(ev, item.id)}
             extra={
               <video
+                key={`${Date.now()}${item.title}`}
                 className="video-component"
                 controls
                 controlsList="noremote footbar nodownload noremoteplayback"
