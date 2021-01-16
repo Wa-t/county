@@ -12,6 +12,11 @@ const Copyright = props => {
           www.chinaxiaokang.com
         </a>
       </span>
+      <div>
+      <a  href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" >
+          京 ICP 备 12037298号-1 
+        </a>
+      </div>
     </div>
   );
 };
